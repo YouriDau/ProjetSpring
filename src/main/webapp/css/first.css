@@ -1,0 +1,18 @@
+body {
+    height: 100%;
+}
+.localeIcon {
+    height: 50px;
+    width: 50px;
+}
+#sticky-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+#top {
+    color: red;
+}
+#bottom {
+    color: blue;
+}
