@@ -11,17 +11,20 @@ import java.util.List;
 public class User implements UserDetails {
 
     private String username;
-
     private String password;
-
+    //
+    private String lastName;
+    private String firstName;
+    private String birthDate;
+    private String email;
+    private String phoneNumber;
+    private String address;
+    private String tvaNumber;
+    //
     private String authorities;
-
     private Boolean accountNonExpired;
-
     private Boolean accountNonLocked;
-
     private Boolean credentialsNonExpired;
-
     private Boolean enabled;
 
     public User(String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
@@ -32,6 +35,18 @@ public class User implements UserDetails {
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
         this.enabled = enabled;
+    }
+
+    public User(String username, String password, String lastName, String firstName, String birthDate, String email, String phoneNumber, String address, String tvaNumber) {
+        setUsername(username);
+        setPassword(password);
+        setLastName(lastName);
+        setFirstName(firstName);
+        setBirthDate(birthDate);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
+        setAddress(address);
+        setTvaNumber(tvaNumber);
     }
 
     public User() {
@@ -125,4 +140,50 @@ public class User implements UserDetails {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
+    //
+    public String getLastName() {
+        return lastName;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getBirthDate() {
+        return birthDate;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public String getTvaNumber() {
+        return tvaNumber;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public void setTvaNumber(String tvaNumber) {
+        this.tvaNumber = tvaNumber;
+    }
+    //
 }

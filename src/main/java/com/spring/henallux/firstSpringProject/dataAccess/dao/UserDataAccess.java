@@ -4,4 +4,5 @@ import com.spring.henallux.firstSpringProject.model.User;
 
 public interface UserDataAccess {
     User findByUsername(String userName);
+    public User addUser(User user);
 }

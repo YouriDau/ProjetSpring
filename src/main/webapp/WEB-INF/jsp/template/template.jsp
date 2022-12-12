@@ -30,7 +30,7 @@
                 <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sign up</a>
+                <a class="nav-link" href="<spring:url value="/registration"/>">Sign up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<spring:url value="/authenticated"/>">Sign in</a>

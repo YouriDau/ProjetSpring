@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -15,7 +16,8 @@ import java.util.List;
 
 
 
-@Entity(name="utilisateur")
+@Entity
+@Table(name="user")
 public class UserEntity {
 
     @Id
@@ -40,18 +42,29 @@ public class UserEntity {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @Column(name= "firstname")
-    private String name;
+    @Column(name= "firstName")
+    private String firstName;
+    //
+    @Column(name= "lastName")
+    private String lastName;
+    @Column(name= "birthDate")
+    private String birthDate;
+    @Column(name= "email")
+    private String email;
+    @Column(name= "phoneNumber")
+    private String phoneNumber;
+    @Column(name= "address")
+    private String address;
+    @Column(name= "tvaNumber")
+    private String tvaNumber;
 
-    public String getName() {
+    /*public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
+    }*/
 
     public UserEntity(String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         this.username = username;
@@ -61,6 +74,18 @@ public class UserEntity {
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
         this.enabled = enabled;
+    }
+
+    public UserEntity(String username, String password, String lastName, String firstName, String birthDate, String email, String phoneNumber, String address, String tvaNumber) {
+        setUsername(username);
+        setPassword(password);
+        setLastName(lastName);
+        setFirstName(firstName);
+        setBirthDate(birthDate);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
+        setAddress(address);
+        setTvaNumber(tvaNumber);
     }
 
     public UserEntity() {
@@ -121,4 +146,50 @@ public class UserEntity {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
+    //
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public String getBirthDate() {
+        return birthDate;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public String getTvaNumber() {
+        return tvaNumber;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public void setTvaNumber(String tvaNumber) {
+        this.tvaNumber = tvaNumber;
+    }
+    //
 }

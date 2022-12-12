@@ -7,10 +7,12 @@ import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserDAO implements UserDataAccess {
 
     private UserRepository userRepository;
@@ -22,12 +24,18 @@ public class UserDAO implements UserDataAccess {
         this.providerConverter = providerConverter;
     }
 
-
     public User findByUsername(String username) {;
         UserEntity userEntity = userRepository.findByUsername(username);
         if (userEntity != null)
              return providerConverter.userEntityToUserModel(userEntity);
        else return null;
+    }
+
+    public User addUser(User user) {
+        UserEntity userEntity = providerConverter.userModelToUserEntity(user);
+        userEntity = userRepository.save(userEntity);
+
+        return providerConverter.userEntityToUserModel(userEntity);
     }
 }
 
