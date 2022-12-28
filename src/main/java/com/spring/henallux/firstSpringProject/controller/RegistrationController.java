@@ -28,13 +28,13 @@ public class RegistrationController {
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String getFormData(@ModelAttribute(value="registration") User form) {
-        //User user = new User(form.getUsername(), form.getPassword(), form.getLastName(), form.getFirstName(), form.getBirthDate(), form.getEmail(), form.getPhoneNumber(), form.getAddress(), form.getTvaNumber(), "ROLE_USER", true, true, true, true);
-        form.setAccountNonExpired(true);
-        form.setAccountNonLocked(true);
-        form.setCredentialsNonExpired(true);
-        form.setEnabled(true);
+        User user = new User(form.getUsername(), form.getPassword(), form.getLastName(), form.getFirstName(), form.getBirthDate(), form.getEmail(), form.getPhoneNumber(), form.getAddress(), form.getTvaNumber(), "ROLE_USER", true, true, true, true);
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
+        user.setEnabled(true);
         System.out.println(form.getUsername());
-        userDAO.addUser(form);
+        userDAO.addUser(user);
         return "redirect:/home";
     }
 }

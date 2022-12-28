@@ -40,7 +40,7 @@ public class UserEntity {
     private String address;
     @Column(name= "birth_date")
     private String birthDate;
-    @Column(name= "tva_number")
+    @Column(name= "tvaNumber")
     private Integer tvaNumber;
     @Column(name = "authorities")
     private String authorities;
@@ -136,7 +136,6 @@ public class UserEntity {
         this.enabled = enabled;
     }
 
-    //
     public String getFirstName() {
         return firstName;
     }
@@ -180,5 +179,24 @@ public class UserEntity {
     public void setTvaNumber(Integer tvaNumber) {
         this.tvaNumber = tvaNumber;
     }
-    //
+
+    @Override
+    public String toString() {
+        String output = "";
+        output += getUsername() + "\n";
+        output += getPassword() + "\n";
+        output += getLastName() + "\n";
+        output += getFirstName() + "\n";
+        output += getBirthDate() + "\n";
+        output += getEmail() + "\n";
+        output += getPhoneNumber() + "\n";
+        output += getAddress() + "\n";
+        output += getTvaNumber() + "\n";
+        output += getAuthorities() + "\n";
+        output += getAccountNonExpired() + "\n";
+        output += getAccountNonLocked() + "\n";
+        output += getCredentialsNonExpired() + "\n";
+        output += getEnabled() + "\n";
+        return output;
+    }
 }

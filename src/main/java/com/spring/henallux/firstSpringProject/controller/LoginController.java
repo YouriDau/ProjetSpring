@@ -11,18 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value="/login")
 public class LoginController {
-    /*@RequestMapping(method= RequestMethod.GET) // si formulaire html et non form:form
-    public String login() {
-        return "integrated:login";
-    }*/
 
     @RequestMapping(method= RequestMethod.GET)
     public String login(Model model) {
         model.addAttribute("user",new User());
         return "integrated:login";
     }
-
-
 
    /*
    <form method="POST">

@@ -36,7 +36,7 @@
     <form:errors path="firstName" />
 
     <form:label path="birthDate">Birth date</form:label>
-    <form:input path="birthDate"/>
+    <form:input path="birthDate" type="date"/>
     <form:errors path="birthDate" />
 
     <form:label path="email">Email</form:label>
