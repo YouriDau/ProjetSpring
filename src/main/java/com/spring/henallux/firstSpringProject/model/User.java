@@ -15,11 +15,11 @@ public class User implements UserDetails {
     //
     private String lastName;
     private String firstName;
-    private String birthDate;
     private String email;
-    private String phoneNumber;
+    private Integer phoneNumber;
     private String address;
-    private String tvaNumber;
+    private String birthDate;
+    private Integer tvaNumber;
     //
     private String authorities;
     private Boolean accountNonExpired;
@@ -27,17 +27,7 @@ public class User implements UserDetails {
     private Boolean credentialsNonExpired;
     private Boolean enabled;
 
-    public User(String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
-    }
-
-    public User(String username, String password, String lastName, String firstName, String birthDate, String email, String phoneNumber, String address, String tvaNumber) {
+    public User(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, Integer tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         setUsername(username);
         setPassword(password);
         setLastName(lastName);
@@ -47,7 +37,16 @@ public class User implements UserDetails {
         setPhoneNumber(phoneNumber);
         setAddress(address);
         setTvaNumber(tvaNumber);
+
+
+        this.authorities = authorities;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
     }
+
+
 
     public User() {
     }
@@ -68,80 +67,15 @@ public class User implements UserDetails {
 
         return grantedAuthorities;
     }
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return accountNonExpired;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return accountNonLocked;
-    }
-
-    public boolean isCredentialsNonExpired() {
-        return credentialsNonExpired;
-    }
-
-    @Override
+    //
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setAuthorities(String authorities) {
-        this.authorities = authorities;
-    }
-
-    public Boolean getAccountNonExpired() {
-        return accountNonExpired;
-    }
-
-    public void setAccountNonExpired(Boolean accountNonExpired) {
-        this.accountNonExpired = accountNonExpired;
-    }
-
-    public Boolean getAccountNonLocked() {
-        return accountNonLocked;
-    }
-
-    public void setAccountNonLocked(Boolean accountNonLocked) {
-        this.accountNonLocked = accountNonLocked;
-    }
-
-    public Boolean getCredentialsNonExpired() {
-        return credentialsNonExpired;
-    }
-
-    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
-        this.credentialsNonExpired = credentialsNonExpired;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    //
     public String getLastName() {
         return lastName;
     }
@@ -157,13 +91,35 @@ public class User implements UserDetails {
     public String getBirthDate() {
         return birthDate;
     }
-    public String getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
-    public String getTvaNumber() {
+    public Integer getTvaNumber() {
         return tvaNumber;
     }
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
 
+
+
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -179,11 +135,29 @@ public class User implements UserDetails {
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void setTvaNumber(String tvaNumber) {
+    public void setTvaNumber(Integer tvaNumber) {
         this.tvaNumber = tvaNumber;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
     //
 }

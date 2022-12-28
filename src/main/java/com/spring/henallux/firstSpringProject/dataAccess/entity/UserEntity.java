@@ -27,13 +27,28 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
+    @Column(name= "first_name")
+    private String firstName;
+    //
+    @Column(name= "last_name")
+    private String lastName;
+    @Column(name= "email")
+    private String email;
+    @Column(name= "phone_number")
+    private Integer phoneNumber;
+    @Column(name= "address")
+    private String address;
+    @Column(name= "birth_date")
+    private String birthDate;
+    @Column(name= "tva_number")
+    private Integer tvaNumber;
     @Column(name = "authorities")
     private String authorities;
 
-    @Column(name = "non_expired")
+    @Column(name = "account_non_expired")
     private Boolean accountNonExpired;
 
-    @Column(name = "non_locked")
+    @Column(name = "account_non_locked")
     private Boolean accountNonLocked;
 
     @Column(name = "credentials_non_expired")
@@ -42,41 +57,7 @@ public class UserEntity {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @Column(name= "firstName")
-    private String firstName;
-    //
-    @Column(name= "lastName")
-    private String lastName;
-    @Column(name= "birthDate")
-    private String birthDate;
-    @Column(name= "email")
-    private String email;
-    @Column(name= "phoneNumber")
-    private String phoneNumber;
-    @Column(name= "address")
-    private String address;
-    @Column(name= "tvaNumber")
-    private String tvaNumber;
-
-    /*public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }*/
-
-    public UserEntity(String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
-    }
-
-    public UserEntity(String username, String password, String lastName, String firstName, String birthDate, String email, String phoneNumber, String address, String tvaNumber) {
+    public UserEntity(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, Integer tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         setUsername(username);
         setPassword(password);
         setLastName(lastName);
@@ -86,7 +67,15 @@ public class UserEntity {
         setPhoneNumber(phoneNumber);
         setAddress(address);
         setTvaNumber(tvaNumber);
+
+
+        this.authorities = authorities;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
     }
+
 
     public UserEntity() {
     }
@@ -160,13 +149,13 @@ public class UserEntity {
     public String getEmail() {
         return email;
     }
-    public String getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
     public String getAddress() {
         return address;
     }
-    public String getTvaNumber() {
+    public Integer getTvaNumber() {
         return tvaNumber;
     }
 
@@ -182,13 +171,13 @@ public class UserEntity {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setTvaNumber(String tvaNumber) {
+    public void setTvaNumber(Integer tvaNumber) {
         this.tvaNumber = tvaNumber;
     }
     //
