@@ -6,13 +6,16 @@
 </head>
 <body>
 <form:form method="POST"  modelAttribute="user" >
+    <div class="w-25 mx-auto">
         <form:label path="username"> User Name : </form:label>
-        <form:input path="username"/>
-        <form:label path="password"> Password : </form:label>
-        <form:input path="password"/>
-        <form:button>Sign In</form:button>
+        <form:input path="username" class="form-control"/>
 
-    </form:form>
+        <form:label path="password"> Password : </form:label>
+        <form:input path="password" class="form-control"/>
+        <form:button class="btn btn-success">Sign In</form:button>
+
+        </form:form>
+    </div>
 
 </body>
 </html>

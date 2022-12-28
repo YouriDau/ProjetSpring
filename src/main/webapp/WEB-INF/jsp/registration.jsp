@@ -16,46 +16,48 @@
 </head>
 <body>
   <form:form
-             methode="POST"
-             action="/security/registration/send"
-             modelAttribute="registration">
-    <form:label path="username">Pseudo</form:label>
-    <form:input path="username"/>
-    <form:errors path="username" />
+       methode="POST"
+       action="/security/registration/send"
+       modelAttribute="registration">
+      <div class="w-25 mx-auto">
+          <form:label path="username">Pseudo</form:label>
+          <form:input path="username" class="form-control"/>
+          <form:errors path="username" />
 
-    <form:label path="password">Password</form:label>
-    <form:input path="password"/>
-    <form:errors path="password" />
+          <form:label path="password">Password</form:label>
+          <form:input path="password" class="form-control"/>
+          <form:errors path="password" />
 
-    <form:label path="lastName">Last name</form:label>
-    <form:input path="lastName"/>
-    <form:errors path="lastName" />
+          <form:label path="lastName">Last name</form:label>
+          <form:input path="lastName" class="form-control"/>
+          <form:errors path="lastName" />
 
-    <form:label path="firstName">First name</form:label>
-    <form:input path="firstName"/>
-    <form:errors path="firstName" />
+          <form:label path="firstName">First name</form:label>
+          <form:input path="firstName" class="form-control"/>
+          <form:errors path="firstName" />
 
-    <form:label path="birthDate">Birth date</form:label>
-    <form:input path="birthDate" type="date"/>
-    <form:errors path="birthDate" />
+          <form:label path="birthDate">Birth date</form:label>
+          <form:input path="birthDate" type="date" class="form-control"/>
+          <form:errors path="birthDate" />
 
-    <form:label path="email">Email</form:label>
-    <form:input path="email"/>
-    <form:errors path="email" />
+          <form:label path="email">Email</form:label>
+          <form:input path="email" class="form-control"/>
+          <form:errors path="email" />
 
-    <form:label path="phoneNumber">Phone number</form:label>
-    <form:input path="phoneNumber"/>
-    <form:errors path="phoneNumber" />
+          <form:label path="phoneNumber">Phone number</form:label>
+          <form:input path="phoneNumber" class="form-control"/>
+          <form:errors path="phoneNumber" />
 
-    <form:label path="address">Address</form:label>
-    <form:input path="address"/>
-    <form:errors path="address" />
+          <form:label path="address">Address</form:label>
+          <form:input path="address" class="form-control"/>
+          <form:errors path="address" />
 
-    <form:label path="tvaNumber">TVA number</form:label>
-    <form:input path="tvaNumber"/>
-    <form:errors path="tvaNumber" />
+          <form:label path="tvaNumber">TVA number</form:label>
+          <form:input path="tvaNumber" class="form-control"/>
+          <form:errors path="tvaNumber" />
 
-    <form:button>Register</form:button>
+          <form:button class="btn btn-success">Register</form:button>
+      </div>
   </form:form>
 </body>
 </html>

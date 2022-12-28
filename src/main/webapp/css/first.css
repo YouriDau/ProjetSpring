@@ -10,9 +10,6 @@ body {
     bottom: 0;
     width: 100%;
 }
-#top {
-    color: red;
-}
-#bottom {
-    color: blue;
+form {
+    margin-top: 80px;
 }
