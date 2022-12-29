@@ -5,15 +5,20 @@ import com.spring.henallux.firstSpringProject.dataAccess.dao.ProductDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.ProductDataAccess;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDataAccess;
+import com.spring.henallux.firstSpringProject.model.Basket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping(value="/home")
+@SessionAttributes({WelcomeController.BASKET})
 public class WelcomeController {
+    protected static final String BASKET = "basket";
     private ProductDataAccess productDAO;
 
     @Autowired
@@ -21,8 +26,13 @@ public class WelcomeController {
         this.productDAO = productDAO;
     }
 
+    @ModelAttribute(BASKET)
+    public Basket setBasket() {
+        return new Basket();
+    }
+
     @RequestMapping(method= RequestMethod.GET)
-    public String home(Model model) {
+    public String home(Model model, @ModelAttribute(value=BASKET) Basket basket) {
         model.addAttribute("products", productDAO.findAll());
         return "integrated:welcome";
     }
