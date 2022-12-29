@@ -8,6 +8,7 @@
           rel="Stylesheet" />
     <link type="text/css" href="<spring:url value='/css/bootstrap.min.css' />"
           rel="Stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <spring:url var="localeFr" value="">
         <spring:param name="locale" value="fr" />
@@ -34,6 +35,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<spring:url value="/authenticated"/>">Sign in</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<spring:url value="/basket"/>"><span class="bi-cart4"></span></a>
             </li>
         </ul>
         <div>
@@ -63,7 +67,7 @@
 </div>
 <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
     <div class="container text-center">
-        <small>Copyright &copy; Your Website</small>
+        <small>Copyright &copy; Foodgood (Youri, Timothé)</small>
     </div>
 </footer>
 

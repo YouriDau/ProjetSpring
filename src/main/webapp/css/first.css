@@ -13,3 +13,17 @@ body {
 form {
     margin-top: 80px;
 }
+.wrapper {
+    padding-bottom: 80px;
+}
+.addItem {
+    font-size: 35px;
+}
+.addBtn {
+    color: dodgerblue;
+    font-size: 25px;
+}
+.lessBtn {
+    color: darkred;
+    font-size: 25px;
+}

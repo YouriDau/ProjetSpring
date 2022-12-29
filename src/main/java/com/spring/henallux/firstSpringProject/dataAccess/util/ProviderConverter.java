@@ -1,7 +1,9 @@
 package com.spring.henallux.firstSpringProject.dataAccess.util;
 
 
+import com.spring.henallux.firstSpringProject.dataAccess.entity.ProductEntity;
 import com.spring.henallux.firstSpringProject.dataAccess.entity.UserEntity;
+import com.spring.henallux.firstSpringProject.model.Product;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.stereotype.Component;
 import org.dozer.DozerBeanMapper;
@@ -26,5 +28,9 @@ public class ProviderConverter {
 
     public UserEntity userModelToUserEntity(User user) {
         return mapper.map(user, UserEntity.class);
+    }
+
+    public Product productEntityToProductModel(ProductEntity productEntity) {
+        return mapper.map(productEntity, Product.class);
     }
 }
