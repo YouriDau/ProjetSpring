@@ -37,7 +37,7 @@
                 <a class="nav-link" href="<spring:url value="/authenticated"/>">Sign in</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<spring:url value="/basket"/>"><span class="bi-cart4"></span></a>
+                <a class="nav-link" href="<spring:url value="/cart"/>"><span class="bi-cart4"></span></a>
             </li>
         </ul>
         <div>

@@ -11,4 +11,5 @@ import java.util.ArrayList;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity,String> {
     ArrayList<ProductEntity> findAll();
+    ProductEntity findByName(String name);
 }

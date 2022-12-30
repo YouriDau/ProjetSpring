@@ -2,7 +2,7 @@
          contentType="text/html; charset=UTF-8"%>
 <%@ include file="include/importTags.jsp"%>
 <body>
-<form:form method="POST"  action="/security/login/send" modelAttribute="login">
+<form:form method="POST"  action="/security/login/send" modelAttribute="login" class="userForm">
     <div class="w-25 mx-auto">
         <form:label path="username"> User Name : </form:label>
         <form:input path="username" class="form-control"/>

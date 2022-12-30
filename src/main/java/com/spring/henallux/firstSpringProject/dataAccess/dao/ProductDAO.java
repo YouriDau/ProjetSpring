@@ -31,4 +31,9 @@ public class ProductDAO implements ProductDataAccess {
         }
         return products;
     }
+
+    public Product findByName(String name) {
+        ProductEntity productEntity = productRepository.findByName(name);
+        return providerConverter.productEntityToProductModel(productEntity);
+    }
 }

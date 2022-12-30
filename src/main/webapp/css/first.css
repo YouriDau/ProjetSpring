@@ -10,20 +10,19 @@ body {
     bottom: 0;
     width: 100%;
 }
-form {
+.numberInput {
+    width: 40px;
+}
+.userForm {
     margin-top: 80px;
 }
 .wrapper {
     padding-bottom: 80px;
 }
-.addItem {
+.cardItem {
     font-size: 35px;
 }
-.addBtn {
-    color: dodgerblue;
-    font-size: 25px;
-}
-.lessBtn {
+.removeBtn {
     color: darkred;
     font-size: 25px;
 }

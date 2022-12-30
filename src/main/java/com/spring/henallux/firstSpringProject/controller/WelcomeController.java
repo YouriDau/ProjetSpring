@@ -3,24 +3,25 @@ package com.spring.henallux.firstSpringProject.controller;
 
 import com.spring.henallux.firstSpringProject.dataAccess.dao.ProductDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.ProductDataAccess;
-import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDAO;
-import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDataAccess;
-import com.spring.henallux.firstSpringProject.model.Basket;
+import com.spring.henallux.firstSpringProject.model.Cart;
+import com.spring.henallux.firstSpringProject.model.CartItem;
 import com.spring.henallux.firstSpringProject.model.Product;
-import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(value="/home")
-@SessionAttributes({WelcomeController.BASKET})
+@SessionAttributes({WelcomeController.CART})
 public class WelcomeController {
-    protected static final String BASKET = "basket";
+    protected static final String CART = "cart";
     private ProductDataAccess productDAO;
 
     @Autowired
@@ -28,21 +29,29 @@ public class WelcomeController {
         this.productDAO = productDAO;
     }
 
-    @ModelAttribute(BASKET)
-    public Basket setBasket() {
-        return new Basket();
+    @ModelAttribute(CART)
+    public Cart setCart() {
+        return new Cart();
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public String home(Model model, @ModelAttribute(value=BASKET) Basket basket) {
-        model.addAttribute("newProduct", new Product());
+    public String home(Model model, @ModelAttribute(value=CART) Cart cart) {
+        model.addAttribute("newProduct", new CartItem());
         model.addAttribute("products", productDAO.findAll());
-        return "integrated:welcome";
+        return "integrated:home";
     }
 
     @RequestMapping(value="/send", method=RequestMethod.POST)
-    public String getFromData(@ModelAttribute(BASKET) Basket basket, @ModelAttribute(value="newProduct") Product form) {
-        basket.addItem(form);
+    public String getFromData(Model model, @ModelAttribute(CART) Cart cart, @Valid @ModelAttribute(value="newProduct") CartItem item, final BindingResult errors) {
+        String quantityMessage = "";
+        if (!errors.hasErrors()) {
+            cart.addItem(item);
+        } else {
+            quantityMessage = "The quantity must be more than 0";
+
+        }
+        model.addAttribute("message", quantityMessage);
+
         return "redirect:/home";
     }
 }

@@ -15,7 +15,7 @@
     <title>User registration</title>
 </head>
 <body>
-  <form:form method="POST"  action="/security/registration/send" modelAttribute="registration">
+  <form:form method="POST"  action="/security/registration/send" modelAttribute="registration" class="userForm">
       <div class="w-25 mx-auto">
           <form:label path="username">Pseudo</form:label>
           <form:input path="username" class="form-control"/>
