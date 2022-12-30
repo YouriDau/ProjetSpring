@@ -6,6 +6,8 @@ import com.spring.henallux.firstSpringProject.dataAccess.dao.ProductDataAccess;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.firstSpringProject.model.Basket;
+import com.spring.henallux.firstSpringProject.model.Product;
+import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,14 @@ public class WelcomeController {
 
     @RequestMapping(method= RequestMethod.GET)
     public String home(Model model, @ModelAttribute(value=BASKET) Basket basket) {
+        model.addAttribute("newProduct", new Product());
         model.addAttribute("products", productDAO.findAll());
         return "integrated:welcome";
+    }
+
+    @RequestMapping(value="/send", method=RequestMethod.POST)
+    public String getFromData(@ModelAttribute(BASKET) Basket basket, @ModelAttribute(value="newProduct") Product form) {
+        basket.addItem(form);
+        return "redirect:/home";
     }
 }

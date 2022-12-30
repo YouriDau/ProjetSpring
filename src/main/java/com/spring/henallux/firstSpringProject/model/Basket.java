@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Basket {
-    private ArrayList<Product> items;
+    private HashMap<Integer, Product> items;
 
     public Basket() {
-        items = new ArrayList<>();
+        items = new HashMap<>();
     }
 
-    public ArrayList<Product> getItems() {
+    public HashMap<Integer, Product> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Product> items) {
-        this.items = items;
+    public void addItem(Product item) {
+        if (!items.containsKey(item.getName())) {
+            items.put(item.getId(), item);
+        }
     }
 }
