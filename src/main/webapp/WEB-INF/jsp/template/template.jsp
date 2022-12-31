@@ -36,6 +36,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="<spring:url value="/authenticated"/>">Sign in</a>
             </li>
+            <sec:authorize access="isAuthenticated()">
+                <li class="nav-item">
+                    <a class="nav-link" href="<spring:url value="/logout"/>">Log out</a>
+                </li>
+            </sec:authorize>
             <li class="nav-item">
                 <a class="nav-link" href="<spring:url value="/cart"/>"><span class="bi-cart4"></span></a>
             </li>
@@ -51,17 +56,6 @@
     </div>
 </nav>
 
-<sec:authorize access="isAuthenticated()">
-
-    <a href="<spring:url value="/logout"/>">Log out</a>
-
-    <form:form method="POST" action="logout">
-        <input type="submit" value="Log out"/>
-    </form:form>
-
-</sec:authorize>
-
-
 <div>
     <tiles:insertAttribute name="main-content" />
 </div>
@@ -71,6 +65,5 @@
     </div>
 </footer>
 
-<script src="<spring:url value='/js/bootstrap.min.js' />" />
 </body>
 </html>

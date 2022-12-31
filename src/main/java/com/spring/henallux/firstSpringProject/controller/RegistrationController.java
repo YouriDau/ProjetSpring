@@ -4,6 +4,7 @@ import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,11 +33,10 @@ public class RegistrationController {
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String getFormData(@Valid @ModelAttribute(value="registration") User form, final BindingResult errors) {
         if(!errors.hasErrors()) {
-            User user = new User(form.getUsername(), form.getPassword(), form.getLastName(), form.getFirstName(), form.getBirthDate(), form.getEmail(), form.getPhoneNumber(), form.getAddress(), form.getTvaNumber(), "ROLE_USER", true, true, true, true);
-            user.setAccountNonExpired(true);
-            user.setAccountNonLocked(true);
-            user.setCredentialsNonExpired(true);
-            user.setEnabled(true);
+            BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
+            String passwordHashed = crypt.encode(form.getPassword());
+            User user = new User(form.getUsername(), passwordHashed, form.getLastName(), form.getFirstName(), form.getBirthDate(), form.getEmail(), form.getPhoneNumber(), form.getAddress(), form.getTvaNumber(), "ROLE_USER", true, true, true, true);
+
             System.out.println(form.getUsername());
             userDAO.addUser(user);
             return "redirect:/home";

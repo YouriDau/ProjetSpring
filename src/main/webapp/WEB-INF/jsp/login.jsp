@@ -10,7 +10,7 @@
         <form:label path="password"> Password : </form:label>
         <form:input path="password" class="form-control"/>
 
-        <form:button class="btn btn-success">Sign In</form:button>
+        <form:button type="submit" class="btn btn-success">Sign In</form:button>
     </div>
 
 </form:form>

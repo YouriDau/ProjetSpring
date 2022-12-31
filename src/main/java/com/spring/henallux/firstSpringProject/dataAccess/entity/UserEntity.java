@@ -68,12 +68,11 @@ public class UserEntity {
         setAddress(address);
         setTvaNumber(tvaNumber);
 
-
-        this.authorities = authorities;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
+        setAuthorities(authorities);
+        setAccountNonExpired(accountNonExpired);
+        setAccountNonLocked(accountNonLocked);
+        setCredentialsNonExpired(credentialsNonExpired);
+        setEnabled(enabled);
     }
 
 
