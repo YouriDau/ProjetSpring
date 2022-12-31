@@ -41,7 +41,7 @@ public class UserEntity {
     @Column(name= "birth_date")
     private String birthDate;
     @Column(name= "tvaNumber")
-    private Integer tvaNumber;
+    private String tvaNumber;
     @Column(name = "authorities")
     private String authorities;
 
@@ -57,7 +57,7 @@ public class UserEntity {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    public UserEntity(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, Integer tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+    public UserEntity(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, String tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         setUsername(username);
         setPassword(password);
         setLastName(lastName);
@@ -154,7 +154,7 @@ public class UserEntity {
     public String getAddress() {
         return address;
     }
-    public Integer getTvaNumber() {
+    public String getTvaNumber() {
         return tvaNumber;
     }
 
@@ -176,7 +176,7 @@ public class UserEntity {
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setTvaNumber(Integer tvaNumber) {
+    public void setTvaNumber(String tvaNumber) {
         this.tvaNumber = tvaNumber;
     }
 

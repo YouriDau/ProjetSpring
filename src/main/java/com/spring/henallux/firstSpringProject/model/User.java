@@ -4,30 +4,42 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class User implements UserDetails {
-
+    @NotNull
+    @Size(min=4, max=50)
     private String username;
+    @NotNull
+    @Size(min=6,max=50)
     private String password;
-    //
+    @NotNull
+    @Size(min=4,max=50)
     private String lastName;
+    @NotNull
+    @Size(min=4,max=50)
     private String firstName;
+    @NotNull
+    @Size(min=6,max=100)
     private String email;
+    @NotNull
     private Integer phoneNumber;
+    @NotNull
+    @Size(min=4,max=200)
     private String address;
+    //@Past
     private String birthDate;
-    private Integer tvaNumber;
-    //
+    private String tvaNumber;
     private String authorities;
     private Boolean accountNonExpired;
     private Boolean accountNonLocked;
     private Boolean credentialsNonExpired;
     private Boolean enabled;
 
-    public User(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, Integer tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+    public User(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, String tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         setUsername(username);
         setPassword(password);
         setLastName(lastName);
@@ -94,7 +106,7 @@ public class User implements UserDetails {
     public Integer getPhoneNumber() {
         return phoneNumber;
     }
-    public Integer getTvaNumber() {
+    public String getTvaNumber() {
         return tvaNumber;
     }
     @Override
@@ -138,7 +150,7 @@ public class User implements UserDetails {
     public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void setTvaNumber(Integer tvaNumber) {
+    public void setTvaNumber(String tvaNumber) {
         this.tvaNumber = tvaNumber;
     }
     public void setPassword(String password) {

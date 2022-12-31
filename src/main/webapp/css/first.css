@@ -26,3 +26,7 @@ body {
     color: darkred;
     font-size: 25px;
 }
+
+.errorMessage {
+    color: red;
+}

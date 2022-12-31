@@ -27,11 +27,11 @@ public class LoginController {
         return "integrated:login";
     }
 
-    @RequestMapping(value="/send", method=RequestMethod.POST)
+    /*@RequestMapping(value="/send", method=RequestMethod.POST)
     public String getFormData(@ModelAttribute(value="login") User form) {
         System.out.println(form.getUsername() + "  " + form.getPassword());
         return "redirect:/home";
-    }
+    }*/
 
    /*
    <form method="POST">
