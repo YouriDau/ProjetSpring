@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/login")
 public class LoginController {
     private UserDataAccess userDAO;
-
+    /*
     @Autowired
     public LoginController(UserDAO userDAO) {
         this.userDAO = userDAO;
-    }
+    }*/
 
     @RequestMapping(method= RequestMethod.GET)
     public String login(Model model) {
