@@ -1,6 +1,7 @@
 package com.spring.henallux.firstSpringProject.model;
 
 import javax.validation.constraints.Min;
+import java.text.DecimalFormat;
 
 public class CartItem {
     private Integer id;
@@ -21,6 +22,11 @@ public class CartItem {
     }
 
     public CartItem() {}
+
+    public Double getTotal() {
+        double total = quantity * unitPrice;
+        return total * 100;
+    }
 
     public Integer getId() {
         return id;

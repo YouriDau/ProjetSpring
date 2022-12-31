@@ -8,6 +8,9 @@
         <p class="text-center mt-3">There is not products for the moment</p>
     </c:if>
     <c:if test="${!products.isEmpty()}">
+        <div>
+            <h1 class="text-center">The categories will be placed here</h1>
+        </div>
         <c:if test="${not empty message}">
             <p>${message}</p>
         </c:if>
@@ -18,14 +21,14 @@
                     <h5>${product.name}<a href="<spring:url value='/product?name=${product.name}'/>"><span class="bi-eye cardItem"></span></a></h5>
                 </div>
                 <div class="card-footer">
-                    <form:form method="POST"  action="/security/home/send" modelAttribute="newProduct" class="">
+                    <form:form method="POST"  action="/security/home/send" modelAttribute="newProduct">
                         <form:input path="id" class="d-none" value="${product.id}" />
                         <form:input path="name" class="d-none" value="${product.name}" />
                         <form:input path="unitPrice" class="d-none" value="${product.unitPrice}" />
                         <form:input path="description" class="d-none" value="${product.description}" />
                         <form:input path="categoryId" class="d-none" value="${product.categoryId}" />
                         <form:label path="quantity">number of products to add in the cart</form:label>
-                        <form:input path="quantity"  class="numberInput" value="1" />
+                        <form:input path="quantity"  class="numberInput" value="1" type="number" />
                         <form:errors path="quantity" />
                         <form:button class="border-0"><span class="bi-plus-circle-fill cardItem"></span></form:button>
                     </form:form>

@@ -21,7 +21,7 @@ public class ProductController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public String product(Model model, @RequestParam(required=false, defaultValue="test") String name) {
+    public String product(Model model, @RequestParam(required=false) String name) {
         Product product = productDAO.findByName(name);
         model.addAttribute(product);
         return "integrated:product";

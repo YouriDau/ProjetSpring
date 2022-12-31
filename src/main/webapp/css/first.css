@@ -12,9 +12,15 @@ body {
 }
 .numberInput {
     width: 40px;
+    width: 70px;
 }
 .userForm {
     margin-top: 80px;
+}
+.tableBottom {
+    background-color: black;
+    color:white;
+    font-weight: bold;
 }
 .wrapper {
     padding-bottom: 80px;

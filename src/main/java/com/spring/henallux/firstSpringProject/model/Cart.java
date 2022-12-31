@@ -20,4 +20,12 @@ public class Cart {
             items.get(item.getName()).addQuantity(item.getQuantity());
         }
     }
+
+    public Double getTotalPrice() {
+        double total = 0;
+        for(CartItem item : items.values()) {
+            total += item.getTotal();
+        }
+        return total;
+    }
 }
