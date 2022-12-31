@@ -24,8 +24,7 @@ public class CartItem {
     public CartItem() {}
 
     public Double getTotal() {
-        double total = quantity * unitPrice;
-        return total * 100;
+        return quantity * unitPrice;
     }
 
     public Integer getId() {
