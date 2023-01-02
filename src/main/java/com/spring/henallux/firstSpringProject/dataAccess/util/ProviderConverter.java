@@ -1,8 +1,11 @@
 package com.spring.henallux.firstSpringProject.dataAccess.util;
 
 
+import com.spring.henallux.firstSpringProject.dataAccess.entity.CategoryEntity;
 import com.spring.henallux.firstSpringProject.dataAccess.entity.ProductEntity;
+import com.spring.henallux.firstSpringProject.dataAccess.entity.TranslationEntity;
 import com.spring.henallux.firstSpringProject.dataAccess.entity.UserEntity;
+import com.spring.henallux.firstSpringProject.model.Category;
 import com.spring.henallux.firstSpringProject.model.Product;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.stereotype.Component;
@@ -32,5 +35,16 @@ public class ProviderConverter {
 
     public Product productEntityToProductModel(ProductEntity productEntity) {
         return mapper.map(productEntity, Product.class);
+    }
+
+
+    public Category TranslationEntityToCategoryModel(TranslationEntity translationEntity) {
+        Category category = new Category();
+
+        category.setId(translationEntity.getCategoryId());
+        category.setLabel(translationEntity.getLabel());
+        category.setLanguage(translationEntity.getLanguageId());
+
+        return category;
     }
 }

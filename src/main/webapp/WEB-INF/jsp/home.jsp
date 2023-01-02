@@ -8,12 +8,22 @@
         <p class="text-center mt-3">There is not products for the moment</p>
     </c:if>
     <c:if test="${!products.isEmpty()}">
-        <div>
+        <div class="container-fluid">
             <h1 class="text-center">The categories will be placed here</h1>
         </div>
-        <c:if test="${not empty message}">
-            <p>${message}</p>
-        </c:if>
+
+        <div class="container-fluid mb-5">
+            <h3>Choose the product's category</h3>
+            <form:form method="POST" action="/security/home/category" modelAttribute="categoryChoosen" class="w-25">
+                <form:select path="label" class="form-select">
+                    <form:option value="all" />
+                    <c:forEach items="${categories}" var="category">
+                        <form:option value="${category.label}" />
+                    </c:forEach>
+                </form:select>
+                <form:button type="submit" class="btn btn-secondary">Apply</form:button>
+            </form:form>
+        </div>
 
         <c:forEach items="${products}" var="product">
             <div class="card m-4" style="width: 18rem;">
@@ -21,7 +31,7 @@
                     <h5>${product.name}<a href="<spring:url value='/product?name=${product.name}'/>"><span class="bi-eye cardItem"></span></a></h5>
                 </div>
                 <div class="card-footer">
-                    <form:form method="POST"  action="/security/home/send" modelAttribute="newProduct">
+                    <form:form method="POST"  action="/security/home/addItem" modelAttribute="newProduct">
                         <form:input path="id" class="d-none" value="${product.id}" />
                         <form:input path="name" class="d-none" value="${product.name}" />
                         <form:input path="unitPrice" class="d-none" value="${product.unitPrice}" />
@@ -30,7 +40,7 @@
                         <form:label path="quantity">number of products to add in the cart</form:label>
                         <form:input path="quantity"  class="numberInput" value="1" type="number" />
                         <form:errors path="quantity" />
-                        <form:button class="border-0"><span class="bi-plus-circle-fill cardItem"></span></form:button>
+                        <form:button type="submit" class="border-0"><span class="bi-plus-circle-fill cardItem"></span></form:button>
                     </form:form>
                 </div>
             </div>

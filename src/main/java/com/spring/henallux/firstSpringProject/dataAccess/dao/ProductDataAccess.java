@@ -7,4 +7,5 @@ import java.util.ArrayList;
 public interface ProductDataAccess {
     ArrayList<Product> findAll();
     Product findByName(String name);
+    ArrayList<Product> findByTranslationLabel(String label);
 }
