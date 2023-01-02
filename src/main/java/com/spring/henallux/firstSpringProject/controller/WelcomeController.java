@@ -24,10 +24,13 @@ public class WelcomeController {
     private ProductDataAccess productDAO;
     private CategoryDataAccess categoryDAO;
 
+    private ArrayList<Product> productsToDisplay;
+
     @Autowired
     public WelcomeController(ProductDAO productDAO, CategoryDAO categoryDAO) {
         this.productDAO = productDAO;
         this.categoryDAO = categoryDAO;
+        productsToDisplay = new ArrayList<>();
     }
 
     @ModelAttribute(CART)
@@ -40,6 +43,8 @@ public class WelcomeController {
 
     @RequestMapping(method= RequestMethod.GET)
     public String home(Model model, @ModelAttribute(value=CART) Cart cart, @ModelAttribute(value=LOCALE) Locale locale, @RequestParam(required=false) String newLocale) {
+        productsToDisplay = productDAO.findAll();
+
         ArrayList<Category> categories;
         if(newLocale != null) {
             locale.setLocale(newLocale);
@@ -48,7 +53,7 @@ public class WelcomeController {
         model.addAttribute("newProduct", new CartItem());
         model.addAttribute("categoryChoosen", new Category());
         model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));
-        model.addAttribute("products", productDAO.findAll());
+        model.addAttribute("products", productsToDisplay);
         return "integrated:home";
     }
 
@@ -56,33 +61,33 @@ public class WelcomeController {
     public String getCategoryFromData(Model model, @ModelAttribute(value="categoryChoosen") Category category, @ModelAttribute(value=CART) Cart cart,
                                       @ModelAttribute(value=LOCALE) Locale locale, @RequestParam(required=false) String newLocale) {
 
-        ArrayList<Product> products = new ArrayList<>();
-        products = productDAO.findAll();
         if (category.getLabel().compareTo("all") == 0) {
-            products = productDAO.findAll();
+            productsToDisplay = productDAO.findAll();
         } else {
-            products = productDAO.findByTranslationLabel(category.getLabel());
+            productsToDisplay = productDAO.findByTranslationLabel(category.getLabel());
         }
 
 
         model.addAttribute("newProduct", new CartItem());
         model.addAttribute("categoryChoosen", new Category());
         model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));
-        model.addAttribute("products", products);
+        model.addAttribute("products", productsToDisplay);
         return "integrated:/home";
     }
 
     @RequestMapping(value="/addItem", method=RequestMethod.POST)
-    public String getFromData(Model model, @ModelAttribute(CART) Cart cart, @Valid @ModelAttribute(value="newProduct") CartItem item, final BindingResult errors) {
-        String quantityMessage = "";
+    public String getFromData(Model model, @ModelAttribute(CART) Cart cart, @ModelAttribute(value=LOCALE) Locale locale,
+                              @Valid @ModelAttribute(value="newProduct") CartItem item, final BindingResult errors) {
+
         if (!errors.hasErrors()) {
             cart.addItem(item);
-        } else {
-            quantityMessage = "The quantity must be more than 0";
-
         }
-        model.addAttribute("message", quantityMessage);
 
-        return "redirect:/home";
+        model.addAttribute("newProduct", new CartItem());
+        model.addAttribute("categoryChoosen", new Category());
+        model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));
+        model.addAttribute("products", productsToDisplay);
+
+        return "integrated:home";
     }
 }

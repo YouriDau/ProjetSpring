@@ -39,7 +39,7 @@
                         <form:input path="categoryId" class="d-none" value="${product.categoryId}" />
                         <form:label path="quantity">number of products to add in the cart</form:label>
                         <form:input path="quantity"  class="numberInput" value="1" type="number" />
-                        <form:errors path="quantity" />
+                        <form:errors path="quantity" class="errorMessage" />
                         <form:button type="submit" class="border-0"><span class="bi-plus-circle-fill cardItem"></span></form:button>
                     </form:form>
                 </div>
