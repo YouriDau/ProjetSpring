@@ -32,11 +32,11 @@
                 </div>
                 <div class="card-footer">
                     <form:form method="POST"  action="/security/home/addItem" modelAttribute="newProduct">
-                        <form:input path="id" class="d-none" value="${product.id}" />
-                        <form:input path="name" class="d-none" value="${product.name}" />
-                        <form:input path="unitPrice" class="d-none" value="${product.unitPrice}" />
-                        <form:input path="description" class="d-none" value="${product.description}" />
-                        <form:input path="categoryId" class="d-none" value="${product.categoryId}" />
+                        <form:input path="id" type="hidden" value="${product.id}" />
+                        <form:input path="name" type="hidden" value="${product.name}" />
+                        <form:input path="unitPrice" type="hidden" value="${product.unitPrice}" />
+                        <form:input path="description" type="hidden" value="${product.description}" />
+                        <form:input path="categoryId" type="hidden" value="${product.categoryId}" />
                         <form:label path="quantity">number of products to add in the cart</form:label>
                         <form:input path="quantity"  class="numberInput" value="1" type="number" />
                         <form:errors path="quantity" class="errorMessage" />

@@ -15,15 +15,5 @@
         <p>${product.description}</p>
         <p>${product.unitPrice} <i class="bi bi-currency-euro"></i></p>
     </div>
-    <div class="card-footer">
-        <form:form id="productCardOptions" method="POST"  action="/security/home/send" modelAttribute="newProduct" class="mt-1">
-            <form:input path="id" class="d-none" value="${product.id}" />
-            <form:input path="name" class="d-none" value="${product.name}" />
-            <form:input path="unitPrice" class="d-none" value="${product.unitPrice}" />
-            <form:input path="description" class="d-none" value="${product.description}" />
-            <form:input path="categoryId" class="d-none" value="${product.categoryId}" />
-            <form:button class="border-0"><span class="bi-plus-circle-fill addItem"></span></form:button>
-        </form:form>
-    </div>
 </div>
 </body>
