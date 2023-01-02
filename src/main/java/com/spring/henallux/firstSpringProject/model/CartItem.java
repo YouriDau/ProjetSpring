@@ -1,5 +1,6 @@
 package com.spring.henallux.firstSpringProject.model;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.text.DecimalFormat;
 
@@ -10,6 +11,7 @@ public class CartItem {
     private Double unitPrice;
     private Integer categoryId;
     @Min(value=1)
+    @Max(value=999)
     private Integer quantity;
 
     public CartItem(Integer id, String name, Double unitPrice, String description, Integer categoryId, Integer quantity) {
