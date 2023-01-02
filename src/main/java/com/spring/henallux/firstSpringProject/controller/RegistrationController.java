@@ -35,9 +35,12 @@ public class RegistrationController {
         if(!errors.hasErrors()) {
             BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
             String passwordHashed = crypt.encode(form.getPassword());
-            User user = new User(form.getUsername(), passwordHashed, form.getLastName(), form.getFirstName(), form.getBirthDate(), form.getEmail(), form.getPhoneNumber(), form.getAddress(), form.getTvaNumber(), "ROLE_USER", true, true, true, true);
 
-            System.out.println(form.getUsername());
+            User user = new User(form.getUsername(), passwordHashed, form.getLastName(), form.getFirstName(),
+                    (form.getBirthDate().isEmpty()? null : form.getBirthDate()), form.getEmail(),
+                    form.getPhoneNumber(), form.getAddress(), form.getTvaNumber(), "ROLE_USER",
+                    true, true, true, true);
+
             userDAO.addUser(user);
             return "redirect:/home";
         } else {

@@ -26,7 +26,11 @@ public class CartItem {
     public CartItem() {}
 
     public Double getTotal() {
-        return quantity * unitPrice;
+        DecimalFormat df = new DecimalFormat("0.00");
+        Double total = quantity * unitPrice;
+        String totalStr = df.format(total);
+        totalStr = totalStr.replace(",", ".");
+        return Double.parseDouble(totalStr);
     }
 
     public Integer getId() {

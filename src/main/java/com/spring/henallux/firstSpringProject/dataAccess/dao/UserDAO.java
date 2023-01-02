@@ -33,11 +33,7 @@ public class UserDAO implements UserDataAccess {
 
     public User addUser(User user) {
         UserEntity userEntity = providerConverter.userModelToUserEntity(user);
-        System.out.println(userEntity);
         userEntity = userRepository.save(userEntity);
-        System.out.println("after");
-        System.out.println(userEntity);
-        System.out.println("fin addUser dans dao");
 
         return providerConverter.userEntityToUserModel(userEntity);
     }
