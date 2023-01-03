@@ -23,7 +23,6 @@ public class WelcomeController {
     protected static final String LOCALE = "locale";
     private ProductDataAccess productDAO;
     private CategoryDataAccess categoryDAO;
-
     private ArrayList<Product> productsToDisplay;
 
     @Autowired
@@ -43,9 +42,12 @@ public class WelcomeController {
 
     @RequestMapping(method= RequestMethod.GET)
     public String home(Model model, @ModelAttribute(value=CART) Cart cart, @ModelAttribute(value=LOCALE) Locale locale, @RequestParam(required=false) String newLocale) {
+        ArrayList<Category> categories;
+
         productsToDisplay = productDAO.findAll();
 
-        ArrayList<Category> categories;
+
+
         if(newLocale != null) {
             locale.setLocale(newLocale);
         }
@@ -68,26 +70,9 @@ public class WelcomeController {
         }
 
 
-        model.addAttribute("newProduct", new CartItem());
         model.addAttribute("categoryChoosen", new Category());
         model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));
         model.addAttribute("products", productsToDisplay);
         return "integrated:/home";
-    }
-
-    @RequestMapping(value="/addItem", method=RequestMethod.POST)
-    public String getFromData(Model model, @ModelAttribute(CART) Cart cart, @ModelAttribute(value=LOCALE) Locale locale,
-                              @Valid @ModelAttribute(value="newProduct") CartItem item, final BindingResult errors) {
-
-        if (!errors.hasErrors()) {
-            cart.addItem(item);
-        }
-
-        model.addAttribute("newProduct", new CartItem());
-        model.addAttribute("categoryChoosen", new Category());
-        model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));
-        model.addAttribute("products", productsToDisplay);
-
-        return "integrated:home";
     }
 }

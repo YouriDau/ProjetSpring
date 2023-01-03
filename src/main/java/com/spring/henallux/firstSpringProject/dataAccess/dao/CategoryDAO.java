@@ -30,7 +30,7 @@ public class CategoryDAO implements CategoryDataAccess {
         ArrayList<TranslationEntity> translations = translationRepository.findByLanguageIdLike(locale);
         ArrayList<Category> categories = new ArrayList<>();
         for (TranslationEntity entity : translations) {
-            categories.add(providerConverter.TranslationEntityToCategoryModel(entity));
+            categories.add(providerConverter.translationEntityToCategoryModel(entity));
         }
         return categories;
     }

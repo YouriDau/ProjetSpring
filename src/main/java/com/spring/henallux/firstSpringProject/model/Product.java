@@ -4,6 +4,7 @@ package com.spring.henallux.firstSpringProject.model;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.DecimalFormat;
 
 public class Product {
     private Integer id;
@@ -19,16 +20,30 @@ public class Product {
     @NotNull
     private Integer categoryId;
 
+    private Integer percentage;
+
     public Product(Integer id, String name, String description, Double unitPrice, Integer categoryId) {
         setId(id);
         setName(name);
         setDescription(description);
         setUnitPrice(unitPrice);
         setCategoryId(categoryId);
+        setPercentage(null);
     }
 
-    public Product(){
+    public Product(){}
 
+    public Double getPriceTVAC() {
+        if (percentage != null) {
+            DecimalFormat df = new DecimalFormat("0.00");
+
+            Double total = (1 - ((double)percentage/100)) * unitPrice;
+            String totalStr = df.format(total);
+            totalStr = totalStr.replace(",", ".");
+            return Double.parseDouble(totalStr);
+        } else {
+            return unitPrice;
+        }
     }
 
     public Integer getId() {
@@ -69,5 +84,13 @@ public class Product {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Integer getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(Integer percentage) {
+        this.percentage = percentage;
     }
 }

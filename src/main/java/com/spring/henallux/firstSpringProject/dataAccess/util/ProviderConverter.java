@@ -1,12 +1,10 @@
 package com.spring.henallux.firstSpringProject.dataAccess.util;
 
 
-import com.spring.henallux.firstSpringProject.dataAccess.entity.CategoryEntity;
-import com.spring.henallux.firstSpringProject.dataAccess.entity.ProductEntity;
-import com.spring.henallux.firstSpringProject.dataAccess.entity.TranslationEntity;
-import com.spring.henallux.firstSpringProject.dataAccess.entity.UserEntity;
+import com.spring.henallux.firstSpringProject.dataAccess.entity.*;
 import com.spring.henallux.firstSpringProject.model.Category;
 import com.spring.henallux.firstSpringProject.model.Product;
+import com.spring.henallux.firstSpringProject.model.Promotion;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.stereotype.Component;
 import org.dozer.DozerBeanMapper;
@@ -29,6 +27,7 @@ public class ProviderConverter {
     }
 
 
+
     public UserEntity userModelToUserEntity(User user) {
         return mapper.map(user, UserEntity.class);
     }
@@ -38,7 +37,8 @@ public class ProviderConverter {
     }
 
 
-    public Category TranslationEntityToCategoryModel(TranslationEntity translationEntity) {
+
+    public Category translationEntityToCategoryModel(TranslationEntity translationEntity) {
         Category category = new Category();
 
         category.setId(translationEntity.getCategoryId());
@@ -46,5 +46,10 @@ public class ProviderConverter {
         category.setLanguage(translationEntity.getLanguageId());
 
         return category;
+    }
+
+
+    public Promotion promotionEntityToPromotionModel(PromotionEntity promotionEntity) {
+        return mapper.map(promotionEntity, Promotion.class);
     }
 }
