@@ -8,7 +8,7 @@
         <form:input path="username" class="form-control"/>
 
         <form:label path="password"> Password : </form:label>
-        <form:input path="password" class="form-control"/>
+        <form:password path="password" class="form-control"/>
 
         <form:button type="submit" class="btn btn-success">Sign In</form:button>
     </div>

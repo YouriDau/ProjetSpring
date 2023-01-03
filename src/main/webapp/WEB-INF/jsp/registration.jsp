@@ -22,7 +22,7 @@
         <form:errors path="username" class="errorMessage"/>
         <br/>
         <form:label path="password">Password</form:label>
-        <form:input path="password" class="form-control"/>
+        <form:password path="password" class="form-control"/>
         <form:errors path="password" class="errorMessage"/>
         <br/>
         <form:label path="lastName">Last name</form:label>

@@ -29,10 +29,12 @@ public class User implements UserDetails {
     @NotNull
     private Integer phoneNumber;
     @NotNull
-    @Size(min=4,max=200)
+    @Size(min=4,max=350)
     private String address;
     //@Past
     private String birthDate;
+    @Min(6)
+    @Max(250)
     private String tvaNumber;
     private String authorities;
     private Boolean accountNonExpired;
