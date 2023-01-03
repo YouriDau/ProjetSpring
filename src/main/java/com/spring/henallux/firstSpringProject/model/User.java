@@ -24,6 +24,7 @@ public class User implements UserDetails {
     private String firstName;
     @NotNull
     @Size(min=6,max=100)
+    @Email
     private String email;
     @NotNull
     private Integer phoneNumber;
