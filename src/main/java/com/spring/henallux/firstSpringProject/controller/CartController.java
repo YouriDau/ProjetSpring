@@ -27,13 +27,14 @@ public class CartController {
 
     @RequestMapping(value="/sendQuantity", method=RequestMethod.POST)
     public String changeQuantity(@ModelAttribute("cart") Cart cart, @ModelAttribute("cartItem") CartItem cartItem) {
-        cart.getItems().get(cartItem.getName()).setQuantity(cartItem.getQuantity());
-        return "integrated:cart";
-    }
+        String name = cartItem.getProduct().getName();
+        Integer quantity = cartItem.getQuantity();
 
-    @RequestMapping(value="/sendRemoveItem", method=RequestMethod.POST)
-    public String removeItem(@ModelAttribute("cart") Cart cart, @ModelAttribute("cartItem") CartItem cartItem) {
-        cart.getItems().remove(cartItem.getName());
+        if (quantity <= 0) {
+            cart.getItems().remove(name);
+        } else {
+            cart.getItem(name).setQuantity(quantity);
+        }
 
         return "integrated:cart";
     }

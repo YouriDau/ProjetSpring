@@ -42,17 +42,12 @@ public class WelcomeController {
 
     @RequestMapping(method= RequestMethod.GET)
     public String home(Model model, @ModelAttribute(value=CART) Cart cart, @ModelAttribute(value=LOCALE) Locale locale, @RequestParam(required=false) String newLocale) {
-        ArrayList<Category> categories;
-
         productsToDisplay = productDAO.findAll();
-
-
 
         if(newLocale != null) {
             locale.setLocale(newLocale);
         }
 
-        model.addAttribute("newProduct", new CartItem());
         model.addAttribute("categoryChoosen", new Category());
         model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));
         model.addAttribute("products", productsToDisplay);
@@ -61,7 +56,7 @@ public class WelcomeController {
 
     @RequestMapping(value="/category", method=RequestMethod.POST)
     public String getCategoryFromData(Model model, @ModelAttribute(value="categoryChoosen") Category category, @ModelAttribute(value=CART) Cart cart,
-                                      @ModelAttribute(value=LOCALE) Locale locale, @RequestParam(required=false) String newLocale) {
+                                      @ModelAttribute(value=LOCALE) Locale locale) {
 
         if (category.getLabel().compareTo("all") == 0) {
             productsToDisplay = productDAO.findAll();

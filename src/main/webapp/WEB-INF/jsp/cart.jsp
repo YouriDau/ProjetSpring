@@ -12,19 +12,19 @@
                 <th class="text-center">Price</th>
                 <th class="text-center">Remove</th>
             </tr>
-            <c:forEach items="${cart.getItems().values()}" var="item">
+            <c:forEach items="${cart.items.values()}" var="item">
                 <tr>
-                    <td>${item.getName()}</td>
-                    <td>${item.getUnitPrice()} €</td>
+                    <td>${item.product.name}</td>
+                    <td>${item.product.unitPrice} €</td>
                     <td>
                         <form:form method="POST" action="/security/cart/sendQuantity" modelAttribute="cartItem">
-                            <form:input path="name" value="${item.getName()}" class="d-none" />
-                            <form:input path="quantity" value="${item.getQuantity()}" onchange="submit()" type="number" class="numberInput text-center" />
+                            <form:input path="product.name" value="${item.product.name}" class="d-none" />
+                            <form:input path="quantity" value="${item.quantity}" onchange="submit()" type="number" class="numberInput text-center" />
                         </form:form>
                     </td>
                     <td>${item.getTotal()} €</td>
                     <td class="text-center">
-                        <a href="<spring:url value="/cart/removeItem/${item.getName()}" />" ><span class="bi-trash removeBtn" /></a>
+                        <a href="<spring:url value="/cart/removeItem/${item.product.name}" />" ><span class="bi-trash removeBtn" /></a>
                     </td>
                 </tr>
             </c:forEach>

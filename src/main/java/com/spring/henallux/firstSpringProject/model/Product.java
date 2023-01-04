@@ -20,7 +20,7 @@ public class Product {
     @NotNull
     private Integer categoryId;
 
-    private Integer percentage;
+    private Promotion promotion;
 
     public Product(Integer id, String name, String description, Double unitPrice, Integer categoryId) {
         setId(id);
@@ -28,22 +28,26 @@ public class Product {
         setDescription(description);
         setUnitPrice(unitPrice);
         setCategoryId(categoryId);
-        setPercentage(null);
+        setPromotion(null);
     }
 
     public Product(){}
 
-    public Double getPriceTVAC() {
-        if (percentage != null) {
-            DecimalFormat df = new DecimalFormat("0.00");
-
-            Double total = (1 - ((double)percentage/100)) * unitPrice;
-            String totalStr = df.format(total);
-            totalStr = totalStr.replace(",", ".");
-            return Double.parseDouble(totalStr);
+    public Double getPriceWithPromo() {
+        if (promotion != null) {
+            Double total = (unitPrice - getPromotionAmount(promotion.getPercentage()));
+            return total;
         } else {
             return unitPrice;
         }
+    }
+
+    public Double getPromotionAmount(Integer promotion) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        Double total = ((double)promotion / 100) * unitPrice;
+        String totalStr = df.format(total);
+        totalStr = totalStr.replace(",", ".");
+        return Double.parseDouble(totalStr);
     }
 
     public Integer getId() {
@@ -86,11 +90,11 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public Integer getPercentage() {
-        return percentage;
+    public Promotion getPromotion() {
+        return promotion;
     }
 
-    public void setPercentage(Integer percentage) {
-        this.percentage = percentage;
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
     }
 }

@@ -33,7 +33,7 @@ public class ProductController {
         Promotion promotion = promotionDAO.findByProductId(product.getId());
 
         if (promotion != null) {
-            product.setPercentage(promotion.getPercentage());
+            product.setPromotion(promotion);
         }
         model.addAttribute(product);
         model.addAttribute("newItem", new CartItem());
@@ -45,10 +45,8 @@ public class ProductController {
                               @Valid @ModelAttribute(value="newItem") CartItem item, final BindingResult errors) {
 
         if (!errors.hasErrors()) {
-            System.out.println(item.getUnitPrice());
             cart.addItem(item);
         }
-
         model.addAttribute(product);
         return "integrated:product";
     }

@@ -13,11 +13,15 @@ public class Cart {
         return items;
     }
 
+    public CartItem getItem(String name) {
+        return items.get(name);
+    }
+
     public void addItem(CartItem item) {
-        if (!items.containsKey(item.getName())) {
-            items.put(item.getName(), item);
+        if (!items.containsKey(item.getProduct().getName())) {
+            items.put(item.getProduct().getName(), item);
         } else {
-            items.get(item.getName()).addQuantity(item.getQuantity());
+            items.get(item.getProduct().getName()).addQuantity(item.getQuantity());
         }
     }
 

@@ -8,22 +8,22 @@
     </div>
     <div class="card-body">
         <p>${product.description}</p>
-        <c:if test="${product.percentage == null}">
+        <c:if test="${product.promotion == null}">
             <p>${product.unitPrice} €</p>
         </c:if>
-        <c:if test="${product.percentage != null}">
+        <c:if test="${product.promotion != null}">
             <del>${product.unitPrice} €</del>
-            <p>${product.getPriceTVAC()} €</p>
+            <p>${product.getPriceWithPromo()} €</p>
         </c:if>
 
     </div>
     <div class="card-footer">
         <form:form method="POST"  action="/security/product/addItem" modelAttribute="newItem">
-            <form:input path="id" type="hidden" value="${product.id}" />
-            <form:input path="name" type="hidden" value="${product.name}" />
-            <form:input path="unitPrice" type="hidden" value="${product.getPriceTVAC()}" />
-            <form:input path="description" type="hidden" value="${product.description}" />
-            <form:input path="categoryId" type="hidden" value="${product.categoryId}" />
+            <form:input path="product.id" type="hidden" value="${product.id}" />
+            <form:input path="product.name" type="hidden" value="${product.name}" />
+            <form:input path="product.unitPrice" type="hidden" value="${product.getPriceWithPromo()}" />
+            <form:input path="product.description" type="hidden" value="${product.description}" />
+            <form:input path="product.categoryId" type="hidden" value="${product.categoryId}" />
             <form:label path="quantity">number of products to add in the cart</form:label>
             <br/>
             <form:input path="quantity"  class="numberInput" value="1" type="number" />
