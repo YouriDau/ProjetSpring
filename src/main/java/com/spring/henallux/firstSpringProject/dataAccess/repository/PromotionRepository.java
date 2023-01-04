@@ -11,5 +11,5 @@ import java.util.Date;
 @Transactional
 @Repository
 public interface PromotionRepository extends JpaRepository<PromotionEntity,String> {
-    PromotionEntity findOneByProductIdAndStartDateGreaterThanEqualAndEndDateGreaterThanEqual(Integer productId, Date startDate, Date endDate);
+    PromotionEntity findOneByProductIdAndStartDateGreaterThanEqualAndEndDateLessThanEqual(Integer productId, Date startDate, Date endDate);
 }

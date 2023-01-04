@@ -26,7 +26,7 @@ public class PromotionDAO implements PromotionDataAccess {
     public Promotion findByProductId(Integer productId) {
         Date today = new Date();
 
-        PromotionEntity promotionEntity = promotionRepository.findOneByProductIdAndStartDateGreaterThanEqualAndEndDateGreaterThanEqual(productId, today, today);
+        PromotionEntity promotionEntity = promotionRepository.findOneByProductIdAndStartDateGreaterThanEqualAndEndDateLessThanEqual(productId, today, today);
         if (promotionEntity != null) {
            return providerConverter.promotionEntityToPromotionModel(promotionEntity);
         } else {
