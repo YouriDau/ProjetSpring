@@ -38,7 +38,15 @@ public class CartItem {
     }
 
     public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+        if (quantity < 1) {
+            this.quantity = 1;
+        } else {
+            if (quantity > 999) {
+                this.quantity = 999;
+            } else {
+                this.quantity = quantity;
+            }
+        }
     }
 
     public void addQuantity(Integer quantity) {

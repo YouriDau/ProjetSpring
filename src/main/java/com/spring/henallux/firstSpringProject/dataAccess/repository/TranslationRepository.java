@@ -12,5 +12,5 @@ import java.util.ArrayList;
 public interface TranslationRepository extends JpaRepository<TranslationEntity, String> {
     ArrayList<TranslationEntity> findByLanguageIdLike(String locale);
 
-    TranslationEntity findByLabel(String label);
+    TranslationEntity findByLabelAndLanguageId(String label, String language);
 }

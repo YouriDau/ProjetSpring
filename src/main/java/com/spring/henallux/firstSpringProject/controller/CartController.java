@@ -25,16 +25,19 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    @RequestMapping(value="/paymentSuccess", method=RequestMethod.GET)
+    public String paymentSuccess(@ModelAttribute("cart") Cart cart) {
+        cart.getItems().clear();
+
+        return "integrated:cart";
+    }
+
     @RequestMapping(value="/sendQuantity", method=RequestMethod.POST)
     public String changeQuantity(@ModelAttribute("cart") Cart cart, @ModelAttribute("cartItem") CartItem cartItem) {
         String name = cartItem.getProduct().getName();
         Integer quantity = cartItem.getQuantity();
 
-        if (quantity <= 0) {
-            cart.getItems().remove(name);
-        } else {
-            cart.getItem(name).setQuantity(quantity);
-        }
+        cart.getItem(name).setQuantity(quantity);
 
         return "integrated:cart";
     }

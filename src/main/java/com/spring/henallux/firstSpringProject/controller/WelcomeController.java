@@ -61,7 +61,7 @@ public class WelcomeController {
         if (category.getLabel().compareTo("all") == 0) {
             productsToDisplay = productDAO.findAll();
         } else {
-            productsToDisplay = productDAO.findByTranslationLabel(category.getLabel());
+            productsToDisplay = productDAO.findByTranslationLabelAndTranslationLanguageId(category.getLabel(), locale.getLocale());
         }
 
 

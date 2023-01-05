@@ -42,8 +42,8 @@ public class ProductDAO implements ProductDataAccess {
         return providerConverter.productEntityToProductModel(productEntity);
     }
 
-    public ArrayList<Product> findByTranslationLabel(String label) {
-        TranslationEntity translationEntity = translationRepository.findByLabel(label);
+    public ArrayList<Product> findByTranslationLabelAndTranslationLanguageId(String label, String language) {
+        TranslationEntity translationEntity = translationRepository.findByLabelAndLanguageId(label, language);
         ArrayList<ProductEntity> productEntities = productRepository.findByCategoryId(translationEntity.getCategoryId());
 
         ArrayList<Product> products = new ArrayList<>();
