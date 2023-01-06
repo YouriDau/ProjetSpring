@@ -4,21 +4,38 @@ body {
 del {
     font-style: italic;
 }
-.localeIcon {
-    height: 50px;
-    width: 50px;
+form {
+    overflow: auto;
 }
 #sticky-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
 }
+.title {
+    text-align: center;
+    margin-top: 30px;
+    text-decoration: underline;
+}
+.successMessage {
+    color: forestgreen;
+    font-weight: bold;
+}
+.errorMessage {
+    color: red;
+}
+.localeIcon {
+    height: 50px;
+    width: 50px;
+}
+
 .numberInput {
     width: 40px;
     width: 70px;
 }
 .userForm {
-    margin-top: 80px;
+    margin-top: 50px;
+    padding-bottom: 100px;
 }
 .tableBottom {
     background-color: black;
@@ -34,8 +51,4 @@ del {
 .removeBtn {
     color: darkred;
     font-size: 25px;
-}
-
-.errorMessage {
-    color: red;
 }

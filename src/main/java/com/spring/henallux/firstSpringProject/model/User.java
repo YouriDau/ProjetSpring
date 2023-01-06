@@ -33,8 +33,7 @@ public class User implements UserDetails {
     private String address;
     //@Past
     private String birthDate;
-    @Min(6)
-    @Max(250)
+    @Size(min=6,max=250)
     private String tvaNumber;
     private String authorities;
     private Boolean accountNonExpired;

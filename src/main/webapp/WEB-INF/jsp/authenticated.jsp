@@ -7,7 +7,7 @@
 
 <sec:authorize access="hasRole('ADMIN')">
     <div>
-        <a href="<spring:url value="/admin"/>">Admin board</a>
+        <a href="<spring:url value="/home"/>">Admin board</a>
     </div>
 </sec:authorize>
 

@@ -7,7 +7,8 @@
     <title>User registration</title>
 </head>
 <body>
-<form:form method="POST"  action="/security/registration/send" modelAttribute="registration">
+<h1 class="title">Registration</h1>
+<form:form method="POST"  action="/security/registration/send" modelAttribute="registration" class="userForm">
     <div class="w-25 mx-auto">
         <form:label path="username">Pseudo</form:label>
         <form:input path="username" class="form-control"/>
@@ -44,7 +45,6 @@
         <form:label path="tvaNumber">TVA number</form:label>
         <form:input path="tvaNumber" class="form-control"/>
         <form:errors path="tvaNumber" class="errorMessage"/>
-
         <form:button class="btn btn-success">Register</form:button>
     </div>
 </form:form>

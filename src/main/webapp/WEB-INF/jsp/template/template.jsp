@@ -25,7 +25,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="<spring:url value="/home" />">Home</a>
@@ -36,23 +36,31 @@
             <li class="nav-item">
                 <a class="nav-link" href="<spring:url value="/authenticated"/>">Sign in</a>
             </li>
-            <sec:authorize access="isAuthenticated()">
-                <li class="nav-item">
-                    <a class="nav-link" href="<spring:url value="/logout"/>">Log out</a>
-                </li>
-            </sec:authorize>
             <li class="nav-item">
                 <a class="nav-link" href="<spring:url value="/cart"/>"><span class="bi-cart4"></span></a>
             </li>
         </ul>
-        <div>
-            <a href="${localeFr}">
-                <img class="localeIcon" alt="fr" src='<spring:url value="/images/localeFr.png"/>' />
-            </a>
-            <a href="${localeEn}">
-                <img class="localeIcon" alt="en" src='<spring:url value="/images/localeEn.png"/>' />
-            </a>
-        </div>
+
+        <ul class="navbar-nav mr-auto">
+            <sec:authorize access="isAuthenticated()">
+                <li class="nav-item active">
+                    <p class="navbar-text">Welcome ${pageContext.request.userPrincipal.name}</p>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="<spring:url value="/logout"/>"><button class="btn btn-light">Log out</button></a>
+                </li>
+            </sec:authorize>
+            <li class="nav-item active">
+                <a class="nav-link" href="${localeFr}">
+                    <img class="localeIcon" alt="fr" src='<spring:url value="/images/localeFr.png"/>' />
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="${localeEn}">
+                    <img class="localeIcon" alt="en" src='<spring:url value="/images/localeEn.png"/>' />
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
 
