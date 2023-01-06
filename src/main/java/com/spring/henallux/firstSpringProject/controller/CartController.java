@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class CartController {
 
     @RequestMapping(method=RequestMethod.GET)
-    public String basket(Model model, @ModelAttribute("cart") Cart cart) {
+    public String cart(Model model, @ModelAttribute("cart") Cart cart) {
         model.addAttribute(cart);
         model.addAttribute("cartItem", new CartItem());
 
@@ -26,26 +26,6 @@ public class CartController {
     public String basketRemoveItem(@PathVariable String name, @ModelAttribute("cart") Cart cart) {
         cart.getItems().remove(name);
         return "redirect:/cart";
-    }
-
-    @RequestMapping(value="/paymentCancelled", method=RequestMethod.GET)
-    public String paymentCancelled(Model model, @ModelAttribute("cart") Cart cart) {
-        String errorMessage = "Your payment has been cancelled!";
-
-        model.addAttribute("errorMessage", errorMessage);
-        model.addAttribute(cart);
-        model.addAttribute("cartItem", new CartItem());
-
-        return "integrated:cart";
-    }
-    @RequestMapping(value="/paymentSuccess", method=RequestMethod.GET)
-    public String paymentSuccess(Model model, @ModelAttribute("cart") Cart cart) {
-
-
-        cart.getItems().clear();
-        String successMessage = "Your payment has been validated!";
-        model.addAttribute("successMessage", successMessage);
-        return "integrated:cart";
     }
 
     @RequestMapping(value="/sendQuantity", method=RequestMethod.POST)

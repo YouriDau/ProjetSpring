@@ -5,7 +5,7 @@
     <h1 class="text-center">Your cart</h1>
     <p class="successMessage text-center">${successMessage}</p>
     <p class="errorMessage text-center">${errorMessage}</p>
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 d-flex flex-column">
         <table class="table-bordered table-light container">
             <tr>
                 <th class="text-center">Name</th>
@@ -39,7 +39,7 @@
             </tr>
         </table>
         <c:if test="${!cart.getItems().isEmpty()}">
-            <a href="<spring:url value="/payment" /> "><button class="btn btn-success">Aller vers la page de payment</button></a>
+            <a href="<spring:url value="/payment" /> " class="text-center mt-2"><button class="btn btn-success">Aller vers la page de payment</button></a>
         </c:if>
     </div>
 </body>

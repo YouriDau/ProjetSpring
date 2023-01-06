@@ -1,5 +1,6 @@
 package com.spring.henallux.firstSpringProject.model;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class Cart {
@@ -26,10 +27,13 @@ public class Cart {
     }
 
     public Double getTotalPrice() {
+        DecimalFormat df = new DecimalFormat("0.00");
         double total = 0;
         for(CartItem item : items.values()) {
             total += item.getTotal();
         }
-        return total;
+        String totalStr = df.format(total);
+        totalStr = totalStr.replace(",", ".");
+        return Double.parseDouble(totalStr);
     }
 }

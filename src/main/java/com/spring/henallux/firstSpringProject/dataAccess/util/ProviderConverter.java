@@ -2,10 +2,7 @@ package com.spring.henallux.firstSpringProject.dataAccess.util;
 
 
 import com.spring.henallux.firstSpringProject.dataAccess.entity.*;
-import com.spring.henallux.firstSpringProject.model.Category;
-import com.spring.henallux.firstSpringProject.model.Product;
-import com.spring.henallux.firstSpringProject.model.Promotion;
-import com.spring.henallux.firstSpringProject.model.User;
+import com.spring.henallux.firstSpringProject.model.*;
 import org.springframework.stereotype.Component;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -25,9 +22,6 @@ public class ProviderConverter {
         user.setAuthorities(userEntity.getAuthorities());
         return user;
     }
-
-
-
     public UserEntity userModelToUserEntity(User user) {
         return mapper.map(user, UserEntity.class);
     }
@@ -35,8 +29,6 @@ public class ProviderConverter {
     public Product productEntityToProductModel(ProductEntity productEntity) {
         return mapper.map(productEntity, Product.class);
     }
-
-
 
     public Category translationEntityToCategoryModel(TranslationEntity translationEntity) {
         Category category = new Category();
@@ -48,8 +40,16 @@ public class ProviderConverter {
         return category;
     }
 
-
     public Promotion promotionEntityToPromotionModel(PromotionEntity promotionEntity) {
         return mapper.map(promotionEntity, Promotion.class);
+    }
+
+    public OrderLineEntity cartItemToOrderLineEntity(CartItem item, Integer orderId) {
+        int quantity = item.getQuantity();
+        double unitPrice = item.getProduct().getUnitPrice();
+        int productId = item.getProduct().getId();
+        OrderLineEntity = new OrderLineEntity();
+
+        return null;
     }
 }

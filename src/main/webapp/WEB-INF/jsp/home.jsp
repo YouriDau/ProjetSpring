@@ -9,7 +9,7 @@
     </c:if>
     <c:if test="${!products.isEmpty()}">
 
-        <div class="container-fluid mb-5 border d-flex flex-column align-items-center">
+        <div class="container mb-5 border d-flex flex-column align-items-center">
 
             <h4>Choose the product's category</h4>
             <form:form method="POST" action="/security/home/category" modelAttribute="categoryChoosen" class="w-25">
@@ -22,7 +22,7 @@
                 <form:button type="submit" class="btn btn-secondary">Apply</form:button>
             </form:form>
         </div>
-        <div class="container-fluid d-flex flex-row flex-wrap wrapper">
+        <div class="container d-flex flex-row flex-wrap wrapper">
             <c:forEach items="${products}" var="product">
                 <div class="card m-4" style="width: 18rem;">
                     <div class="card-header card-title">
