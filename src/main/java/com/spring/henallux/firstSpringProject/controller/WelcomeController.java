@@ -1,10 +1,7 @@
 package com.spring.henallux.firstSpringProject.controller;
 
 
-import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryDAO;
-import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryDataAccess;
-import com.spring.henallux.firstSpringProject.dataAccess.dao.ProductDAO;
-import com.spring.henallux.firstSpringProject.dataAccess.dao.ProductDataAccess;
+import com.spring.henallux.firstSpringProject.dataAccess.dao.*;
 import com.spring.henallux.firstSpringProject.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,12 +20,14 @@ public class WelcomeController {
     protected static final String LOCALE = "locale";
     private ProductDataAccess productDAO;
     private CategoryDataAccess categoryDAO;
+    private PromotionDAO promotionDAO;
     private ArrayList<Product> productsToDisplay;
 
     @Autowired
-    public WelcomeController(ProductDAO productDAO, CategoryDAO categoryDAO) {
+    public WelcomeController(ProductDAO productDAO, CategoryDAO categoryDAO, PromotionDAO promotionDAO) {
         this.productDAO = productDAO;
         this.categoryDAO = categoryDAO;
+        this.promotionDAO = promotionDAO;
         productsToDisplay = new ArrayList<>();
     }
 
@@ -48,6 +47,14 @@ public class WelcomeController {
             locale.setLocale(newLocale);
         }
 
+        Promotion promotion;
+        for(Product product : productsToDisplay) {
+            promotion = promotionDAO.findByProductId(product.getId());
+            if (promotion != null) {
+                product.setPromotion(promotion);
+            }
+        }
+
         model.addAttribute("categoryChoosen", new Category());
         model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));
         model.addAttribute("products", productsToDisplay);
@@ -63,7 +70,6 @@ public class WelcomeController {
         } else {
             productsToDisplay = productDAO.findByTranslationLabelAndTranslationLanguageId(category.getLabel(), locale.getLocale());
         }
-
 
         model.addAttribute("categoryChoosen", new Category());
         model.addAttribute("categories", categoryDAO.findAllByLocale(locale.getLocale()));

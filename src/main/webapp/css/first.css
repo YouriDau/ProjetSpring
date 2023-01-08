@@ -37,6 +37,10 @@ form {
     margin-top: 50px;
     padding-bottom: 100px;
 }
+.mandatory {
+    font-weight: bold;
+    color: red;
+}
 .tableBottom {
     background-color: black;
     color:white;

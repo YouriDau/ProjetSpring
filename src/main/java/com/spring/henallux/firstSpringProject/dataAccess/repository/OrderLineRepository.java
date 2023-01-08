@@ -8,6 +8,6 @@ import javax.transaction.Transactional;
 
 @Transactional
 @Repository
-public interface OrderLineRepository extends JpaRepository<OrderLineEntity,String> {
+public interface OrderLineRepository extends JpaRepository<OrderLineEntity,Integer> {
 
 }

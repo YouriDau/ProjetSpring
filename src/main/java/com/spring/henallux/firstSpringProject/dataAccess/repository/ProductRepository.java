@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 @Transactional
 @Repository
-public interface ProductRepository extends JpaRepository<ProductEntity,String> {
+public interface ProductRepository extends JpaRepository<ProductEntity,Integer> {
     ArrayList<ProductEntity> findAll();
     ProductEntity findByName(String name);
     ArrayList<ProductEntity> findByCategoryId(Integer id);

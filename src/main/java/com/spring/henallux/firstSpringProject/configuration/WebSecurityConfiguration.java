@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_REQUEST = "/login";
-    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home/**", "/product/**", "/registration/**", "/login/**", "/cart/**", "/css/**","/images/**"};
+    private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/home/**", "/description", "/product/**", "/registration/**", "/login/**", "/cart/**", "/css/**","/images/**"};
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{};
 
     private UserDetailsService userDetailsServiceImpl;
@@ -44,6 +44,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin() // We define the login part here.
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // provided by spring to redirect to the last request
                 .loginPage(LOGIN_REQUEST) // We specify a login page. Otherwise spring creates one by default
+                .defaultSuccessUrl("/home")
                 .permitAll() // To make the login page the available for any user
 
                 .and()

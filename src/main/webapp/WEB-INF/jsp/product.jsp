@@ -8,14 +8,15 @@
     </div>
     <div class="card-body">
         <p>${product.description}</p>
-        <c:if test="${product.promotion == null}">
-            <p>${product.unitPrice} €</p>
-        </c:if>
-        <c:if test="${product.promotion != null}">
-            <del>${product.unitPrice} €</del>
-            <p>${product.getPriceWithPromo()} €</p>
-        </c:if>
-
+        <c:choose>
+            <c:when test="${product.promotion == null}">
+                <p>${product.unitPrice} €</p>
+            </c:when>
+            <c:otherwise>
+                <del>${product.unitPrice} €</del>
+                <p>${product.getPriceWithPromo()} €</p>
+            </c:otherwise>
+        </c:choose>
     </div>
     <div class="card-footer">
         <form:form method="POST"  action="/security/product/addItem" modelAttribute="newItem">

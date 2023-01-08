@@ -30,11 +30,8 @@
             <li class="nav-item active">
                 <a class="nav-link" href="<spring:url value="/home" />">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<spring:url value="/registration"/>">Sign up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<spring:url value="/authenticated"/>">Sign in</a>
+            <li clas="nav-item">
+                <a class="nav-link" href="<spring:url value="/description"/>">About us</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<spring:url value="/cart"/>"><span class="bi-cart4"></span></a>
@@ -42,6 +39,14 @@
         </ul>
 
         <ul class="navbar-nav mr-auto">
+            <sec:authorize access="!isAuthenticated()">
+                <li class="nav-item">
+                    <a class="nav-link" href="<spring:url value="/registration"/>">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<spring:url value="/login"/>">Sign in</a>
+                </li>
+            </sec:authorize>
             <sec:authorize access="isAuthenticated()">
                 <li class="nav-item active">
                     <p class="navbar-text">Welcome ${pageContext.request.userPrincipal.name}</p>

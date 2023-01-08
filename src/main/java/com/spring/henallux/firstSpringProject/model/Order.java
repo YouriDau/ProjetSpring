@@ -1,30 +1,27 @@
-package com.spring.henallux.firstSpringProject.dataAccess.entity;
+package com.spring.henallux.firstSpringProject.model;
 
-import javax.persistence.*;
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
-@Entity
-@Table(name="`order`")
-public class OrderEntity {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
+public class Order {
     private Integer id;
-    @Column(name="`date`")
     private Date date;
-    @Column(name="is_paid")
     private Boolean isPaid;
-    @Column(name="user_pseudo")
     private String userPseudo;
 
-    public OrderEntity(Integer id, Date date, Boolean isPaid, String userPseudo) {
+    public Order(Integer id, Date date, Boolean isPaid, String userPseudo) {
         setId(id);
         setDate(date);
         setIsPaid(isPaid);
         setUserPseudo(userPseudo);
     }
 
-    public OrderEntity(){}
+    public Order() {
+        setIsPaid(false);
+        setDate(new Date());
+    }
 
     public Integer getId() {
         return id;

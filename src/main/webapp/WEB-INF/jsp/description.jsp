@@ -1,6 +1,5 @@
 <%@ page pageEncoding="UTF-8"
          contentType="text/html; charset=UTF-8"%>
-<%@ include file="include/importTags.jsp"%>
 <body>
-    <h1>Description of the company here</h1>
+    <h1 class="text-center mt-5">Description of the company here</h1>
 </body>

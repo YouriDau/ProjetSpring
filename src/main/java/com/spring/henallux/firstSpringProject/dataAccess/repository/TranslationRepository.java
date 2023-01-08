@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 @Transactional
 @Repository
-public interface TranslationRepository extends JpaRepository<TranslationEntity, String> {
+public interface TranslationRepository extends JpaRepository<TranslationEntity, Integer> {
     ArrayList<TranslationEntity> findByLanguageIdLike(String locale);
 
     TranslationEntity findByLabelAndLanguageId(String label, String language);

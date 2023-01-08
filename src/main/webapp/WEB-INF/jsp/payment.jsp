@@ -15,7 +15,7 @@
             <input type="hidden" name="lc" value="fr_FR" />
             <input type="hidden" name="cancel_return" value="http://localhost:8088/security/payment/paymentCancelled" />
             <input type="hidden" name="return" value="http://localhost:8088/security/payment/paymentSuccess" />
-            <input type="image" src="https://www.paypalobjects.com/fr_FR/BE/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
+            <input type="image" src="https://www.paypalobjects.com/fr_FR/BE/i/btn/btn_paynowCC_LG.gif" border="0" name="submit">
         </form>
     </div>
 </c:if>

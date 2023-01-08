@@ -1,7 +1,10 @@
 package com.spring.henallux.firstSpringProject.dataAccess.dao;
 
-import com.spring.henallux.firstSpringProject.model.Cart;
+
+import com.spring.henallux.firstSpringProject.model.Order;
 
 public interface OrderDataAccess {
-    void AddOrder(Cart cart);
+    void saveOrder(Order order);
+
+    public void updateOrderIsPaid(boolean isPaid, String username);
 }

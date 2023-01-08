@@ -24,6 +24,7 @@ public class UserDAO implements UserDataAccess {
         this.providerConverter = providerConverter;
     }
 
+    @Override
     public User findByUsername(String username) {;
         UserEntity userEntity = userRepository.findByUsername(username);
         if (userEntity != null)
@@ -31,6 +32,7 @@ public class UserDAO implements UserDataAccess {
        else return null;
     }
 
+    @Override
     public User addUser(User user) {
         UserEntity userEntity = providerConverter.userModelToUserEntity(user);
         userEntity = userRepository.save(userEntity);

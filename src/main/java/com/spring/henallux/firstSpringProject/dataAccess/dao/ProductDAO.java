@@ -27,6 +27,7 @@ public class ProductDAO implements ProductDataAccess {
         this.providerConverter = providerConverter;
     }
 
+    @Override
     public ArrayList<Product> findAll() {
         ArrayList<ProductEntity> productEntities = productRepository.findAll();
         ArrayList<Product> products = new ArrayList<>();
@@ -37,11 +38,13 @@ public class ProductDAO implements ProductDataAccess {
         return products;
     }
 
+    @Override
     public Product findByName(String name) {
         ProductEntity productEntity = productRepository.findByName(name);
         return providerConverter.productEntityToProductModel(productEntity);
     }
 
+    @Override
     public ArrayList<Product> findByTranslationLabelAndTranslationLanguageId(String label, String language) {
         TranslationEntity translationEntity = translationRepository.findByLabelAndLanguageId(label, language);
         ArrayList<ProductEntity> productEntities = productRepository.findByCategoryId(translationEntity.getCategoryId());

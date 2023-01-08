@@ -9,6 +9,6 @@ import java.util.Date;
 
 @Transactional
 @Repository
-public interface PromotionRepository extends JpaRepository<PromotionEntity,String> {
+public interface PromotionRepository extends JpaRepository<PromotionEntity,Integer> {
     PromotionEntity findOneByProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(Integer productId, Date startDate, Date endDate);
 }

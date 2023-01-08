@@ -12,6 +12,7 @@
         <form:password path="password" class="form-control"/>
         <br/>
         <form:button type="submit" class="btn btn-success">Sign In</form:button>
+        <p>no account yet? <a href="<spring:url value="registration" />">Click here to register</a></p>
     </div>
 
 </form:form>
