@@ -35,12 +35,12 @@ public class UserEntity {
     @Column(name= "email")
     private String email;
     @Column(name= "phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
     @Column(name= "address")
     private String address;
     @Column(name= "birth_date")
     private String birthDate;
-    @Column(name= "tvaNumber")
+    @Column(name= "tva_number")
     private String tvaNumber;
     @Column(name = "authorities")
     private String authorities;
@@ -57,7 +57,7 @@ public class UserEntity {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    public UserEntity(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, String tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+    public UserEntity(String username, String password, String lastName, String firstName, String birthDate, String email, String phoneNumber, String address, String tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         setUsername(username);
         setPassword(password);
         setLastName(lastName);
@@ -147,7 +147,7 @@ public class UserEntity {
     public String getEmail() {
         return email;
     }
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
     public String getAddress() {
@@ -169,7 +169,7 @@ public class UserEntity {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public void setAddress(String address) {

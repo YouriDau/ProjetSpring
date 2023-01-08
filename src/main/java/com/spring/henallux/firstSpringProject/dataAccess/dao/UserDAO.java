@@ -39,5 +39,15 @@ public class UserDAO implements UserDataAccess {
 
         return providerConverter.userEntityToUserModel(userEntity);
     }
+
+    @Override
+    public boolean userExists(String username) {
+        return userRepository.existsById(username);
+    }
+
+    @Override
+    public boolean emailExists(String email) {
+        return userRepository.existsByEmail(email);
+    }
 }
 

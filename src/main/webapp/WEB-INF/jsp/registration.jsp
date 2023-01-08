@@ -13,6 +13,9 @@
         <form:label path="username">Pseudo <span class="mandatory">*</span></form:label>
         <form:input path="username" class="form-control"/>
         <form:errors path="username" class="errorMessage"/>
+        <c:if test="${usernameError != null}">
+            <p class="errorMessage text-center">${usernameError}</p>
+        </c:if>
         <br/>
         <form:label path="password">Password <span class="mandatory">*</span></form:label>
         <form:password path="password" class="form-control"/>
@@ -33,10 +36,16 @@
         <form:label path="email">Email <span class="mandatory">*</span></form:label>
         <form:input path="email" class="form-control"/>
         <form:errors path="email" class="errorMessage"/>
+        <c:if test="${emailError != null}">
+            <p class="errorMessage text-center">${emailError}</p>
+        </c:if>
         <br/>
         <form:label path="phoneNumber">Phone number <span class="mandatory">*</span></form:label>
         <form:input path="phoneNumber" class="form-control"/>
         <form:errors path="phoneNumber" class="errorMessage"/>
+        <c:if test="${phoneNumberError != null}">
+            <p class="errorMessage text-center">${phoneNumberError}</p>
+        </c:if>
         <br/>
         <form:label path="address">Address <span class="mandatory">*</span></form:label>
         <form:input path="address" class="form-control"/>

@@ -6,4 +6,6 @@ public interface UserDataAccess {
     public
     User findByUsername(String userName);
     User addUser(User user);
+    boolean userExists(String username);
+    boolean emailExists(String email);
 }

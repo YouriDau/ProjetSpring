@@ -14,7 +14,7 @@ public class User implements UserDetails {
     @Size(min=4, max=50)
     private String username;
     @NotNull
-    @Size(min=6,max=50)
+    @Size(min=6,max=80)
     private String password;
     @NotNull
     @Size(min=4,max=50)
@@ -23,17 +23,17 @@ public class User implements UserDetails {
     @Size(min=4,max=50)
     private String firstName;
     @NotNull
-    @Size(min=6,max=100)
+    @Size(min=6,max=50)
     @Email
     private String email;
     @NotNull
-    private Integer phoneNumber;
+    private String phoneNumber;
     @NotNull
-    @Size(min=4,max=350)
+    @Size(min=4,max=150)
     private String address;
     //@Past
     private String birthDate;
-    @Size(min=6,max=250)
+    @Size(max=30)
     private String tvaNumber;
     private String authorities;
     private Boolean accountNonExpired;
@@ -41,7 +41,7 @@ public class User implements UserDetails {
     private Boolean credentialsNonExpired;
     private Boolean enabled;
 
-    public User(String username, String password, String lastName, String firstName, String birthDate, String email, Integer phoneNumber, String address, String tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+    public User(String username, String password, String lastName, String firstName, String birthDate, String email, String phoneNumber, String address, String tvaNumber, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
         setUsername(username);
         setPassword(password);
         setLastName(lastName);
@@ -52,15 +52,12 @@ public class User implements UserDetails {
         setAddress(address);
         setTvaNumber(tvaNumber);
 
-
-        this.authorities = authorities;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
+        setAuthorities(authorities);
+        setAccountNonExpired(accountNonExpired);
+        setAccountNonLocked(accountNonLocked);
+        setCredentialsNonExpired(credentialsNonExpired);
+        setEnabled(enabled);
     }
-
-
 
     public User() {
     }
@@ -105,7 +102,7 @@ public class User implements UserDetails {
     public String getBirthDate() {
         return birthDate;
     }
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
     public String getTvaNumber() {
@@ -149,7 +146,7 @@ public class User implements UserDetails {
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
     public void setTvaNumber(String tvaNumber) {
