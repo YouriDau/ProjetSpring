@@ -12,6 +12,17 @@ form {
     bottom: 0;
     width: 100%;
 }
+#companyDescription {
+    font-family: Arial;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #F8F8FF;
+}
+#founders {
+    text-align: right;
+    font-style: italic;
+}
 .title {
     text-align: center;
     margin-top: 30px;
@@ -55,4 +66,7 @@ form {
 .removeBtn {
     color: darkred;
     font-size: 25px;
+}
+.important {
+    font-weight: bold;
 }

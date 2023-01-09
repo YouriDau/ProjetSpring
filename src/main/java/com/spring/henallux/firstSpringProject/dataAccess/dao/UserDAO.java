@@ -33,11 +33,9 @@ public class UserDAO implements UserDataAccess {
     }
 
     @Override
-    public User addUser(User user) {
+    public void addUser(User user) {
         UserEntity userEntity = providerConverter.userModelToUserEntity(user);
         userEntity = userRepository.save(userEntity);
-
-        return providerConverter.userEntityToUserModel(userEntity);
     }
 
     @Override

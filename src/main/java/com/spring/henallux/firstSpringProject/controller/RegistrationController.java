@@ -35,7 +35,7 @@ public class RegistrationController {
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String getFormData(Model model, @Valid @ModelAttribute(value="registration") User form, final BindingResult errors) {
         if(!errors.hasErrors()) {
-            // vérify the phone number
+            // verify the phone number
             String regexPhoneNumber = "^(\\+[1-9]{1,3}|0)[-. ]?([0-9]{3})([-. ]?([0-9]{2})){3}$";
             Pattern pattern = Pattern.compile(regexPhoneNumber);
             Matcher matcher = pattern.matcher(form.getPhoneNumber());

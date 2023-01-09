@@ -5,7 +5,7 @@ import com.spring.henallux.firstSpringProject.model.User;
 public interface UserDataAccess {
     public
     User findByUsername(String userName);
-    User addUser(User user);
+    void addUser(User user);
     boolean userExists(String username);
     boolean emailExists(String email);
 }

@@ -2,10 +2,6 @@
          contentType="text/html; charset=UTF-8"%>
 <%@ include file="include/importTags.jsp"%>
 
-<html>
-<head>
-    <title>User registration</title>
-</head>
 <body>
 <h1 class="title">Registration</h1>
 <form:form method="POST"  action="/security/registration/send" modelAttribute="registration" class="userForm">
@@ -61,4 +57,3 @@
     </div>
 </form:form>
 </body>
-</html>
