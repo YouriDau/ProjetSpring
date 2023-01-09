@@ -35,14 +35,14 @@ public class Product {
 
     public Double getPriceWithPromo() {
         if (promotion != null) {
-            Double total = (unitPrice - getPromotionAmount(promotion.getPercentage()));
+            Double total = (unitPrice - getPromotionAmount(promotion.getPercentage(), unitPrice));
             return total;
         } else {
             return unitPrice;
         }
     }
 
-    public Double getPromotionAmount(Integer promotion) {
+    public Double getPromotionAmount(int promotion, double unitPrice) {
         DecimalFormat df = new DecimalFormat("0.00");
         Double total = ((double)promotion / 100) * unitPrice;
         String totalStr = df.format(total);
