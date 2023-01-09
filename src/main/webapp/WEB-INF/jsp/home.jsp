@@ -11,7 +11,7 @@
 
         <div class="container mb-5 border d-flex flex-column align-items-center">
             <h4>Choose the product's category</h4>
-            <form:form method="POST" action="/security/home/category" modelAttribute="categoryChoosen" class="w-25">
+            <form:form method="POST" action="/foodgood/home/category" modelAttribute="categoryChoosen" class="w-25">
                 <form:select path="label" class="form-select">
                     <form:option value="all" />
                     <c:forEach items="${categories}" var="category">

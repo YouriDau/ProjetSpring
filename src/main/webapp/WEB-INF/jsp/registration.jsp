@@ -4,7 +4,7 @@
 
 <body>
 <h1 class="title">Registration</h1>
-<form:form method="POST"  action="/security/registration/send" modelAttribute="registration" class="userForm">
+<form:form method="POST"  action="/foodgood/registration/send" modelAttribute="registration" class="userForm">
     <div class="w-25 mx-auto">
         <form:label path="username">Pseudo <span class="mandatory">*</span></form:label>
         <form:input path="username" class="form-control"/>

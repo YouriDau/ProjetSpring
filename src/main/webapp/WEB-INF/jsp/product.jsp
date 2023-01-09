@@ -19,7 +19,7 @@
         </c:choose>
     </div>
     <div class="card-footer">
-        <form:form method="POST"  action="/security/product/addItem" modelAttribute="newItem">
+        <form:form method="POST"  action="/foodgood/product/addItem" modelAttribute="newItem">
             <form:input path="product.id" type="hidden" value="${product.id}" />
             <form:input path="product.name" type="hidden" value="${product.name}" />
             <form:input path="product.unitPrice" type="hidden" value="${product.getPriceWithPromo()}" />

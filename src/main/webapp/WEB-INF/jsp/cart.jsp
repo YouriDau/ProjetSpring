@@ -19,7 +19,7 @@
                     <td>${item.product.name}</td>
                     <td>${item.product.unitPrice} €</td>
                     <td>
-                        <form:form method="POST" action="/security/cart/sendQuantity" modelAttribute="cartItem">
+                        <form:form method="POST" action="/foodgood/cart/sendQuantity" modelAttribute="cartItem">
                             <form:input path="product.name" value="${item.product.name}" class="d-none" />
                             <form:input path="quantity" value="${item.quantity}" onchange="submit()" type="number" class="numberInput text-center" />
                         </form:form>
