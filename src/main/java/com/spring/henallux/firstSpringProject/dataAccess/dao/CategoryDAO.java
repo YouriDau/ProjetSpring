@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 @Service
-@Transactional
 public class CategoryDAO implements CategoryDataAccess {
     private TranslationRepository translationRepository;
     private ProviderConverter providerConverter;

@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 import java.util.Date;
 
 @Service
-@Transactional
 public class PromotionDAO implements PromotionDataAccess {
     private PromotionRepository promotionRepository;
     private ProviderConverter providerConverter;

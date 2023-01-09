@@ -44,6 +44,7 @@ public class ProductDAO implements ProductDataAccess {
         return providerConverter.productEntityToProductModel(productEntity);
     }
 
+    @Transactional
     @Override
     public ArrayList<Product> findByTranslationLabelAndTranslationLanguageId(String label, String language) {
         TranslationEntity translationEntity = translationRepository.findByLabelAndLanguageId(label, language);

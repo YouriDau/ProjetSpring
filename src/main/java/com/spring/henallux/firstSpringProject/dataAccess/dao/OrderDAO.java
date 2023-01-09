@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
+@Transactional
 public class OrderDAO implements OrderDataAccess {
     private OrderRepository orderRepository;
     private ProviderConverter providerConverter;
