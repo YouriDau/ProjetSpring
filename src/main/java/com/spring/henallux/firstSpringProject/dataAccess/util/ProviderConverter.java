@@ -44,9 +44,13 @@ public class ProviderConverter {
         return mapper.map(promotionEntity, Promotion.class);
     }
 
+    public Order orderEntityToOrderModel(OrderEntity orderEntity) {
+        return mapper.map(orderEntity, Order.class);
+    }
     public OrderEntity orderModelToOrderEntity(Order order) {
         return mapper.map(order, OrderEntity.class);
     }
+
     public OrderLineEntity cartItemToOrderLineEntity(CartItem item, Integer orderId) {
         int quantity = item.getQuantity();
         double unitPrice = item.getProduct().getUnitPrice();
