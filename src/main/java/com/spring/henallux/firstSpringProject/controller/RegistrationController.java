@@ -67,9 +67,9 @@ public class RegistrationController {
                 return "redirect:/home";
             } else {
                 if (userExists)
-                    model.addAttribute("usernameError", "This email is already taken");
+                    model.addAttribute("usernameError", "This username is already existing!");
                 if (emailExists)
-                    model.addAttribute("emailError", "This username is already existing!");
+                    model.addAttribute("emailError", "This email is already takenThis username is already existing!");
                 if (!phoneNumberIsCorrect)
                     model.addAttribute("phoneNumberError", "The phone number must be like (+32 471 11 22 33) or (0471 11 22 33)");
                 return "integrated:registration";
